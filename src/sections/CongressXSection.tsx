@@ -14,11 +14,9 @@ import {
 import {
   Globe,
   Home,
-  Award,
   CheckCircle2,
   AlertTriangle,
-  Sparkles,
-  ExternalLink
+  Sparkles
 } from 'lucide-react';
 
 export const CongressXSection: React.FC = () => {
@@ -50,25 +48,33 @@ export const CongressXSection: React.FC = () => {
         </div>
 
         {/* 20 Years Renewal Highlight Banner */}
-        <div className="mb-8 p-6 rounded-2xl bg-heritage-ivoryLight border border-heritage-gold/50 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-xl bg-heritage-gold/20 text-heritage-goldDark flex items-center justify-center shrink-0">
-              <Award className="w-6 h-6" />
+        <div className="mb-8 rounded-2xl overflow-hidden border border-heritage-gold/50 shadow-sm bg-white">
+          <div className="grid grid-cols-1 md:grid-cols-12 items-center">
+            <div className="md:col-span-5 h-64 md:h-full relative overflow-hidden">
+              <img
+                src="/images/modernization.jpg"
+                alt="Diện mạo đất nước sau 20 năm đổi mới"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/50 via-transparent to-transparent" />
             </div>
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-heritage-red">
-                Mốc son lịch sử trọng đại
-              </span>
+            <div className="md:col-span-7 p-6 sm:p-8 space-y-3">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-heritage-red bg-heritage-red/10 px-2.5 py-1 rounded-full">
+                  Mốc son lịch sử trọng đại • 1986 – 2006
+                </span>
+                <span className="text-xs font-bold text-heritage-navy bg-heritage-ivory px-2.5 py-1 rounded-md border border-heritage-gold/30">
+                  {congressXContext.generalSecretary}
+                </span>
+              </div>
               <h4 className="text-xl font-heading font-bold text-heritage-navy">
-                Tổng Kết 20 Năm Thực Hiện Công Cuộc Đổi Mới (1986–2006)
+                Tổng Kết 20 Năm Thực Hiện Công Cuộc Đổi Mới
               </h4>
-              <p className="text-sm text-heritage-muted mt-1">
-                {congressXContext.historicalSignificance}
+              <p className="text-sm text-heritage-muted leading-relaxed">
+                {congressXContext.historicalSignificance} Thế và lực của đất nước tăng lên rõ rệt; nền kinh tế tăng trưởng liên tục, chính trị – xã hội ổn định vững chắc, vị thế quốc tế được nâng cao chưa từng có.
               </p>
             </div>
-          </div>
-          <div className="text-xs font-bold text-heritage-navy bg-white px-3 py-1.5 rounded-lg border border-heritage-gold/30 shrink-0">
-            {congressXContext.generalSecretary}
           </div>
         </div>
 
@@ -249,41 +255,63 @@ export const CongressXSection: React.FC = () => {
           Đặc biệt làm nổi bật 2 mốc son lịch sử: Ngày 11/01/2007 Việt Nam chính thức trở thành thành viên WTO và Ngày 09/02/2007 ban hành Nghị quyết số 09-NQ/TW về Chiến lược biển Việt Nam đến năm 2020.
         </p>
 
-        {/* Highlight Banner: WTO & Nghị quyết 09 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-          <div className="p-5 rounded-2xl bg-gradient-to-r from-red-900 to-red-800 text-white shadow-lg flex items-start gap-4">
-            <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center shrink-0 text-heritage-goldLight">
-              <ExternalLink className="w-6 h-6" />
-            </div>
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-heritage-goldLight">
+        {/* Highlight Banner: WTO & Nghị quyết 09 with Images */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+          
+          {/* WTO Card */}
+          <div className="rounded-2xl overflow-hidden border border-red-900/30 shadow-lg bg-gradient-to-br from-red-950 to-red-900 text-white flex flex-col justify-between group">
+            <div className="relative aspect-[16/9] overflow-hidden">
+              <img
+                src="/images/wto_geneva.jpg"
+                alt="Trụ sở WTO tại Geneva, Thụy Sĩ"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-red-950 via-transparent to-transparent" />
+              <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-red-800/90 text-heritage-goldLight text-[11px] font-bold uppercase tracking-wider backdrop-blur-sm border border-red-700">
                 11/01/2007 • Cột mốc lịch sử
-              </span>
-              <h4 className="text-lg font-heading font-bold text-white mt-0.5">
+              </div>
+            </div>
+            <div className="p-5 space-y-2">
+              <h4 className="text-xl font-heading font-bold text-white">
                 Gia Nhập WTO (Thành viên thứ 150)
               </h4>
-              <p className="text-xs text-white/80 mt-1 leading-relaxed">
-                Sau 11 năm đàm phán, mở toang cánh cửa thương mại toàn cầu, thúc đẩy xuất khẩu và kỷ lục thu hút FDI.
+              <p className="text-xs text-white/80 leading-relaxed">
+                Sau 11 năm đàm phán kiên trì, Việt Nam chính thức hòa mạng thương mại toàn cầu, thúc đẩy xuất khẩu và tạo bước nhảy vọt dòng vốn FDI từ 6,84 lên 19,88 tỷ USD.
               </p>
+              <div className="text-[11px] text-heritage-goldLight italic pt-1">
+                Địa điểm: Trụ sở WTO (Centre William Rappard), Geneva, Thụy Sĩ
+              </div>
             </div>
           </div>
 
-          <div className="p-5 rounded-2xl bg-gradient-to-r from-teal-900 to-cyan-900 text-white shadow-lg flex items-start gap-4">
-            <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center shrink-0 text-cyan-200">
-              <Sparkles className="w-6 h-6" />
-            </div>
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-cyan-200">
+          {/* NQ09 Maritime Card */}
+          <div className="rounded-2xl overflow-hidden border border-cyan-900/30 shadow-lg bg-gradient-to-br from-teal-950 to-cyan-950 text-white flex flex-col justify-between group">
+            <div className="relative aspect-[16/9] overflow-hidden">
+              <img
+                src="/images/cargo.jpg"
+                alt="Tàu container MAERSK HANOI cập cảng"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-cyan-950 via-transparent to-transparent" />
+              <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-cyan-800/90 text-cyan-200 text-[11px] font-bold uppercase tracking-wider backdrop-blur-sm border border-cyan-700">
                 09/02/2007 • Quyết sách biển thế kỷ
-              </span>
-              <h4 className="text-lg font-heading font-bold text-white mt-0.5">
+              </div>
+            </div>
+            <div className="p-5 space-y-2">
+              <h4 className="text-xl font-heading font-bold text-white">
                 Nghị Quyết 09-NQ/TW Về Chiến Lược Biển Đến 2020
               </h4>
-              <p className="text-xs text-white/80 mt-1 leading-relaxed">
-                Mục tiêu đưa Việt Nam trở thành quốc gia mạnh về biển, làm giàu từ biển, kinh tế biển đóng góp 53–55% GDP.
+              <p className="text-xs text-white/80 leading-relaxed">
+                Mục tiêu lịch sử: Đưa nước ta trở thành quốc gia mạnh về biển, làm giàu từ biển; phấn đấu kinh tế biển đóng góp 53–55% GDP và 55–60% tổng kim ngạch xuất khẩu cả nước.
               </p>
+              <div className="text-[11px] text-cyan-300 italic pt-1">
+                Hội nghị lần thứ 4 Ban Chấp hành Trung ương Đảng khóa X
+              </div>
             </div>
           </div>
+
         </div>
 
         <Timeline items={congressXTimeline} theme="heritage" />

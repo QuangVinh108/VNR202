@@ -6,42 +6,54 @@ export const maritimePotentials = [
     title: "Đường bờ biển dài hơn 3.260 km",
     value: "> 3.260 km",
     description: "Trải dài từ Móng Cái (Quảng Ninh) đến Hà Tiên (Kiên Giang), mở ra vùng đặc quyền kinh tế rộng hơn 1 triệu km² và hàng ngàn hòn đảo lớn nhỏ.",
-    icon: "Compass"
+    icon: "Compass",
+    image: "/images/map_vietnam.jpg",
+    imageAlt: "Bản đồ địa hình Việt Nam và Biển Đông"
   },
   {
     id: "maritime-shipping",
     title: "Hàng hải & Vận tải biển quốc tế",
     value: "Tuyến hàng hải huyết mạch",
     description: "Nằm án ngữ trên tuyến hàng hải nhộn nhịp bậc nhất thế giới nối Ấn Độ Dương và Thái Bình Dương, kết nối trực tiếp các trung tâm kinh tế toàn cầu.",
-    icon: "Ship"
+    icon: "Ship",
+    image: "/images/haiphong_port.jpg",
+    imageAlt: "Cụm cảng biển Hải Phòng và dịch vụ logistics phía Bắc"
   },
   {
     id: "marine-resources",
     title: "Tài nguyên sinh vật & Thủy hải sản",
     value: "Hàng ngàn loài sinh vật",
     description: "Trữ lượng hải sản dồi dào, phong phú về chủng loại; điều kiện tự nhiên lý tưởng cho nuôi trồng thủy sản nước lợ và nuôi biển công nghệ cao.",
-    icon: "Fish"
+    icon: "Fish",
+    image: "/images/fishing.jpg",
+    imageAlt: "Đội tàu thuyền đánh cá tại bến Mũi Né"
   },
   {
     id: "coastal-tourism",
     title: "Du lịch biển, đảo nhiệt đới",
     value: "Hàng trăm bãi biển đẹp",
     description: "Nhiều vịnh biển đẹp hàng đầu thế giới (Hạ Long, Nha Trang, Lăng Cô) cùng chuỗi đảo ngọc thu hút hàng chục triệu lượt du khách quốc tế và nội địa.",
-    icon: "Palmtree"
+    icon: "Palmtree",
+    image: "/images/danang.jpg",
+    imageAlt: "Bãi biển Đà Nẵng và du lịch biển miền Trung"
   },
   {
     id: "energy-resources",
     title: "Dầu khí & Điện gió ngoài khơi",
     value: "Trữ lượng năng lượng lớn",
     description: "Bể trầm tích thềm lục địa giàu tài nguyên dầu mỏ, khí đốt; cùng tiềm năng điện gió ngoài khơi thuộc nhóm cao nhất Đông Nam Á.",
-    icon: "Zap"
+    icon: "Zap",
+    image: "/images/wind.jpg",
+    imageAlt: "Cánh đồng điện gió ngoài khơi Bạc Liêu"
   },
   {
     id: "coastal-industry",
     title: "Khu kinh tế ven biển & Logistics",
     value: "Hệ thống KKT trọng điểm",
     description: "Hình thành chuỗi đô thị ven biển, khu công nghiệp cảng biển và trung tâm logistics hiện đại kết nối sâu vào mạng lưới sản xuất toàn cầu.",
-    icon: "Anchor"
+    icon: "Anchor",
+    image: "/images/cargo.jpg",
+    imageAlt: "Tàu container siêu trọng MAERSK HANOI cập cảng"
   }
 ];
 

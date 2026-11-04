@@ -16,6 +16,8 @@ export const OverviewSection: React.FC = () => {
       period: "Nhiệm kỳ 2001 – 2005",
       color: "red",
       icon: Landmark,
+      image: "/images/badinh_hall.jpg",
+      imageAlt: "Hội trường Ba Đình, Hà Nội – Không gian diễn ra Đại hội IX năm 2001",
       description: "Đại hội mở đầu thế kỷ XXI, tổng kết thế kỷ XX, thông qua Chiến lược phát triển KT-XH 10 năm và xác định con đường quá độ lên CNXH phù hợp với thực tiễn Việt Nam.",
       sections: [
         "Bối cảnh lịch sử quốc tế & trong nước",
@@ -33,6 +35,8 @@ export const OverviewSection: React.FC = () => {
       period: "Nhiệm kỳ 2006 – 2010",
       color: "gold",
       icon: BookOpen,
+      image: "/images/badinh_interior.jpg",
+      imageAlt: "Khán phòng lịch sử Đại hội X – Đánh dấu 20 năm công cuộc đổi mới",
       description: "Tổng kết 20 năm đổi mới (1986–2006), rút ra 5 bài học lớn; bước ngoặt gia nhập WTO và ban hành Nghị quyết số 09-NQ/TW về Chiến lược biển Việt Nam.",
       sections: [
         "Bối cảnh lịch sử & 20 năm đổi mới",
@@ -50,6 +54,8 @@ export const OverviewSection: React.FC = () => {
       period: "Tầm nhìn 2020 – 2030 – 2045",
       color: "ocean",
       icon: Ship,
+      image: "/images/cargo.jpg",
+      imageAlt: "Tàu container MAERSK HANOI – Vận tải biển và cảng biển quốc tế",
       description: "Phát huy tiềm năng hơn 3.260 km bờ biển; thực trạng thành tựu & thách thức; 6 nhóm giải pháp chiến lược và sứ mệnh của thế hệ sinh viên hôm nay.",
       sections: [
         "Cơ sở, tiềm năng & các chủ trương lớn của Đảng",
@@ -78,7 +84,7 @@ export const OverviewSection: React.FC = () => {
           return (
             <div
               key={topic.id}
-              className={`rounded-2xl p-7 flex flex-col justify-between border transition-all duration-300 relative group overflow-hidden ${
+              className={`rounded-2xl flex flex-col justify-between border transition-all duration-300 relative group overflow-hidden ${
                 isOcean
                   ? 'bg-white border-heritage-ocean/30 shadow-ocean hover:shadow-ocean-hover hover:border-heritage-ocean'
                   : 'bg-white border-heritage-gold/30 shadow-heritage hover:shadow-heritage-hover hover:border-heritage-red'
@@ -86,84 +92,98 @@ export const OverviewSection: React.FC = () => {
             >
               {/* Top Accent Strip */}
               <div
-                className={`absolute top-0 left-0 right-0 h-1.5 ${
+                className={`absolute top-0 left-0 right-0 h-1.5 z-20 ${
                   isOcean ? 'bg-heritage-ocean' : 'bg-heritage-red'
                 }`}
               />
 
-              <div>
-                {/* Header tag & Icon */}
-                <div className="flex items-center justify-between gap-3 mb-5">
-                  <div className="flex items-center gap-2">
-                    <span
-                      className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-black text-white ${
-                        isOcean ? 'bg-heritage-ocean' : 'bg-heritage-red'
-                      }`}
-                    >
-                      {topic.themeNumber}
-                    </span>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-heritage-muted">
-                      {topic.period}
-                    </span>
-                  </div>
-
-                  <div
-                    className={`w-10 h-10 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110 ${
-                      isOcean
-                        ? 'bg-heritage-oceanMist text-heritage-ocean'
-                        : 'bg-heritage-surfaceRed text-heritage-red'
+              {/* Topic Image Banner */}
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-gray-100 border-b border-gray-100">
+                <img
+                  src={topic.image}
+                  alt={topic.imageAlt}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                
+                {/* Theme Number Pill */}
+                <div className="absolute top-4 left-4 flex items-center gap-2">
+                  <span
+                    className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-black text-white shadow-md ${
+                      isOcean ? 'bg-heritage-ocean' : 'bg-heritage-red'
                     }`}
                   >
-                    <Icon className="w-5 h-5" />
-                  </div>
+                    {topic.themeNumber}
+                  </span>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-white bg-black/50 backdrop-blur-sm px-2.5 py-1 rounded-md border border-white/20">
+                    {topic.period}
+                  </span>
                 </div>
 
-                {/* Main Card Title */}
-                <h3 className="text-xl sm:text-2xl font-heading font-bold text-heritage-navy mb-1.5 group-hover:text-heritage-red transition-colors">
-                  {topic.title}
-                </h3>
-                <p className="text-xs font-semibold text-heritage-goldDark mb-4">
-                  {topic.subtitle}
-                </p>
-
-                {/* Short Description */}
-                <p className="text-sm text-heritage-muted leading-relaxed mb-6">
-                  {topic.description}
-                </p>
-
-                {/* Sub-sections bullet points */}
-                <div className="space-y-2 mb-6 pt-4 border-t border-gray-100">
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-heritage-navy flex items-center gap-1.5 mb-2">
-                    <Layers className="w-3.5 h-3.5 text-heritage-goldDark" />
-                    <span>Nội dung nghiên cứu:</span>
-                  </div>
-                  {topic.sections.map((sec, idx) => (
-                    <div key={idx} className="text-xs text-heritage-dark flex items-start gap-2">
-                      <span className="text-heritage-goldDark font-bold mt-0.5">•</span>
-                      <span>{sec}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Bottom Actions & Stats pill */}
-              <div className="pt-4 border-t border-gray-100 space-y-3">
-                <div className="text-[11px] font-medium text-heritage-muted bg-heritage-ivory px-3 py-1.5 rounded-lg border border-heritage-gold/20 text-center">
-                  {topic.statsCount}
-                </div>
-
-                <button
-                  onClick={() => scrollTo(topic.id)}
-                  className={`w-full py-2.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all ${
+                {/* Floating Icon */}
+                <div
+                  className={`absolute bottom-3 right-4 w-9 h-9 rounded-xl flex items-center justify-center backdrop-blur-md shadow-md ${
                     isOcean
-                      ? 'bg-heritage-ocean hover:bg-heritage-oceanDeep text-white shadow-sm'
-                      : 'bg-heritage-red hover:bg-heritage-deepRed text-white shadow-sm'
+                      ? 'bg-heritage-ocean text-white'
+                      : 'bg-heritage-red text-white'
                   }`}
                 >
-                  <span>Khám phá chủ đề {topic.themeNumber}</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                </button>
+                  <Icon className="w-4 h-4" />
+                </div>
               </div>
+
+              {/* Card Body */}
+              <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+                <div>
+                  {/* Main Card Title */}
+                  <h3 className="text-xl sm:text-2xl font-heading font-bold text-heritage-navy mb-1 group-hover:text-heritage-red transition-colors">
+                    {topic.title}
+                  </h3>
+                  <p className="text-xs font-semibold text-heritage-goldDark mb-3">
+                    {topic.subtitle}
+                  </p>
+
+                  {/* Short Description */}
+                  <p className="text-sm text-heritage-muted leading-relaxed mb-5">
+                    {topic.description}
+                  </p>
+
+                  {/* Sub-sections bullet points */}
+                  <div className="space-y-2 mb-6 pt-4 border-t border-gray-100">
+                    <div className="text-[11px] font-bold uppercase tracking-wider text-heritage-navy flex items-center gap-1.5 mb-2">
+                      <Layers className="w-3.5 h-3.5 text-heritage-goldDark" />
+                      <span>Nội dung nghiên cứu:</span>
+                    </div>
+                    {topic.sections.map((sec, idx) => (
+                      <div key={idx} className="text-xs text-heritage-dark flex items-start gap-2">
+                        <span className="text-heritage-goldDark font-bold mt-0.5">•</span>
+                        <span>{sec}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bottom Actions & Stats pill */}
+                <div className="pt-4 border-t border-gray-100 space-y-3">
+                  <div className="text-[11px] font-medium text-heritage-muted bg-heritage-ivory px-3 py-1.5 rounded-lg border border-heritage-gold/20 text-center">
+                    {topic.statsCount}
+                  </div>
+
+                  <button
+                    onClick={() => scrollTo(topic.id)}
+                    className={`w-full py-2.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all ${
+                      isOcean
+                        ? 'bg-heritage-ocean hover:bg-heritage-oceanDeep text-white shadow-sm'
+                        : 'bg-heritage-red hover:bg-heritage-deepRed text-white shadow-sm'
+                    }`}
+                  >
+                    <span>Khám phá chủ đề {topic.themeNumber}</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+              </div>
+
             </div>
           );
         })}
@@ -171,4 +191,3 @@ export const OverviewSection: React.FC = () => {
     </section>
   );
 };
-

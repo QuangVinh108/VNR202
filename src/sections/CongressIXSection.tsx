@@ -73,6 +73,35 @@ export const CongressIXSection: React.FC = () => {
           </h3>
         </div>
 
+        {/* Historical Context Image Banner */}
+        <div className="mb-8 rounded-2xl overflow-hidden border border-heritage-gold/40 shadow-heritage bg-white">
+          <div className="grid grid-cols-1 md:grid-cols-12 items-center">
+            <div className="md:col-span-5 h-64 md:h-full relative overflow-hidden">
+              <img
+                src="/images/badinh_hall.jpg"
+                alt="Hội trường Ba Đình, Hà Nội – Không gian tổ chức Đại hội IX"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/50 via-transparent to-transparent" />
+            </div>
+            <div className="md:col-span-7 p-6 sm:p-8 space-y-3">
+              <span className="text-xs font-bold uppercase tracking-wider text-heritage-red bg-heritage-red/10 px-2.5 py-1 rounded-full">
+                Thời khắc lịch sử • 19 – 22/4/2001
+              </span>
+              <h4 className="text-xl font-heading font-bold text-heritage-navy">
+                Bước Vào Thiên Niên Kỷ Mới Với Khát Vọng Phát Triển
+              </h4>
+              <p className="text-sm text-heritage-muted leading-relaxed">
+                Đại hội IX được triệu tập tại Thủ đô Hà Nội trong bối cảnh toàn cầu hóa và cách mạng khoa học - công nghệ bùng nổ, đất nước đã qua 15 năm đổi mới (1986–2001) với nhiều tiền đề to lớn nhưng cũng đứng trước áp lực cạnh tranh gay gắt.
+              </p>
+              <div className="text-xs text-heritage-goldDark font-semibold italic pt-1">
+                Địa điểm: Hội trường Ba Đình, Thủ đô Hà Nội
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
           {/* Card 1: Bối cảnh quốc tế */}

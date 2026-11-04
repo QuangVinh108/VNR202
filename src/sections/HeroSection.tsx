@@ -7,7 +7,7 @@ export const HeroSection: React.FC = () => {
   };
 
   return (
-    <section id="hero" className="relative pt-28 pb-20 sm:pt-36 sm:pb-28 overflow-hidden dong-son-pattern border-b border-heritage-gold/30">
+    <section id="hero" className="relative pt-28 pb-20 sm:pt-36 sm:pb-24 overflow-hidden dong-son-pattern border-b border-heritage-gold/30">
       
       {/* Subtle radial ambient gradients */}
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-heritage-red/5 rounded-full blur-3xl pointer-events-none" />
@@ -105,8 +105,61 @@ export const HeroSection: React.FC = () => {
 
         </div>
 
+        {/* Featured Visual Hero Cards (Historical Ba Dinh Hall & Ha Long Bay) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto pt-14">
+          
+          {/* Card 1: Hoi truong Ba Dinh */}
+          <div className="group relative rounded-2xl overflow-hidden border border-heritage-gold/40 shadow-heritage bg-white">
+            <div className="relative aspect-[16/10] overflow-hidden">
+              <img
+                src="/images/badinh_hall.jpg"
+                alt="Hội trường Ba Đình, Hà Nội – Không gian lịch sử tổ chức Đại hội Đảng IX và X"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="eager"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-heritage-red/90 text-white text-xs font-bold uppercase tracking-wider backdrop-blur-sm border border-white/20">
+                Lịch sử Đảng (2001–2010)
+              </div>
+              <div className="absolute bottom-3 left-4 right-4 text-white">
+                <h3 className="font-heading font-bold text-lg leading-snug">
+                  Hội trường Ba Đình, Thủ đô Hà Nội
+                </h3>
+                <p className="text-xs text-white/80 line-clamp-1 mt-0.5">
+                  Không gian lịch sử nơi diễn ra Đại hội đại biểu toàn quốc lần thứ IX và lần thứ X
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2: Vinh Ha Long & Bien Dao */}
+          <div className="group relative rounded-2xl overflow-hidden border border-heritage-ocean/40 shadow-ocean bg-white">
+            <div className="relative aspect-[16/10] overflow-hidden">
+              <img
+                src="/images/hero_halong.jpg"
+                alt="Vịnh Hạ Long, Quảng Ninh – Không gian biển đảo kỳ vĩ của Tổ quốc"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="eager"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-heritage-ocean/90 text-white text-xs font-bold uppercase tracking-wider backdrop-blur-sm border border-white/20">
+                Chiến lược Biển Việt Nam
+              </div>
+              <div className="absolute bottom-3 left-4 right-4 text-white">
+                <h3 className="font-heading font-bold text-lg leading-snug">
+                  Biển Trời Quê Hương & Khát Vọng Đại Dương
+                </h3>
+                <p className="text-xs text-white/80 line-clamp-1 mt-0.5">
+                  Bờ biển dài hơn 3.260 km – Định hướng đưa Việt Nam thành quốc gia mạnh về biển, giàu từ biển
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
         {/* Bottom subtle scroll invitation */}
-        <div className="text-center pt-14">
+        <div className="text-center pt-12">
           <button
             onClick={() => scrollTo('overview')}
             className="inline-flex flex-col items-center text-xs font-semibold text-heritage-muted hover:text-heritage-red transition-colors group"
@@ -120,4 +173,3 @@ export const HeroSection: React.FC = () => {
     </section>
   );
 };
-

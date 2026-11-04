@@ -28,7 +28,6 @@ import {
 } from 'lucide-react';
 
 export const MaritimeSection: React.FC = () => {
-
   const getIcon = (name: string) => {
     switch (name) {
       case 'TrendingUp': return <TrendingUp className="w-6 h-6 text-heritage-ocean" />;
@@ -42,6 +41,39 @@ export const MaritimeSection: React.FC = () => {
       case 'Palmtree': return <Palmtree className="w-5 h-5 text-heritage-goldDark" />;
       case 'Zap': return <Zap className="w-5 h-5 text-heritage-goldDark" />;
       default: return <Compass className="w-5 h-5 text-heritage-goldDark" />;
+    }
+  };
+
+  const solutionImages: Record<string, { src: string; alt: string; caption: string }> = {
+    'solution-1': {
+      src: '/images/cargo.jpg',
+      alt: 'Tàu container MAERSK HANOI tại cụm cảng quốc tế',
+      caption: 'Cụm cảng nước sâu & logistics vận tải biển quốc tế'
+    },
+    'solution-2': {
+      src: '/images/haiphong_port.jpg',
+      alt: 'Cảng Hải Phòng ứng dụng công nghệ hiện đại',
+      caption: 'Chuyển đổi số cảng thông minh và giám sát hành trình biển'
+    },
+    'solution-3': {
+      src: '/images/mangrove.jpg',
+      alt: 'Rừng ngập mặn Cà Mau – Cần Giờ',
+      caption: 'Lá chắn xanh bảo vệ bờ biển và phát triển kinh tế tuần hoàn'
+    },
+    'solution-4': {
+      src: '/images/danang.jpg',
+      alt: 'Ngư dân và biển Đà Nẵng',
+      caption: 'Đào tạo nguồn nhân lực biển chất lượng cao và chuyển đổi sinh kế'
+    },
+    'solution-5': {
+      src: '/images/map_vietnam.jpg',
+      alt: 'Bản đồ quy hoạch không gian biển Việt Nam',
+      caption: 'Hoàn thiện quy hoạch không gian biển và liên kết vùng'
+    },
+    'solution-6': {
+      src: '/images/sovereignty.jpg',
+      alt: 'Đảo Trường Sa – Cột mốc chủ quyền thiêng liêng',
+      caption: 'Gắn kết chặt chẽ kinh tế biển với bảo vệ chủ quyền Tổ quốc'
     }
   };
 
@@ -65,7 +97,7 @@ export const MaritimeSection: React.FC = () => {
         theme="ocean"
       />
 
-      {/* PHẦN A: TIỀM NĂNG & LỢI THẾ BIỂN VIỆT NAM (BẢN ĐỒ TƯƠNG TÁC + 6 LỢI THẾ) */}
+      {/* PHẦN A: TIỀM NĂNG & LỢI THẾ BIỂN VIỆT NAM (PART-POTENTIAL) */}
       <div id="maritime-potentials" className="mb-20 scroll-mt-24">
         <div className="flex items-center gap-2 mb-6">
           <span className="w-2 h-6 bg-heritage-ocean rounded-full" />
@@ -74,29 +106,85 @@ export const MaritimeSection: React.FC = () => {
           </h3>
         </div>
 
-        {/* 6 Lợi thế lớn cards */}
+        {/* Featured Topography Map Banner (Theo mẫu tham khảo project-bridge) */}
+        <div className="mb-12 rounded-3xl overflow-hidden border border-heritage-ocean/30 shadow-ocean bg-white">
+          <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
+            <div className="lg:col-span-5 relative overflow-hidden bg-slate-900 aspect-[4/3] lg:aspect-auto lg:h-full">
+              <img
+                src="/images/map_vietnam.jpg"
+                alt="Bản đồ địa hình Việt Nam và Biển Đông – Đường bờ biển dài hơn 3.260 km"
+                className="w-full h-full object-cover"
+                loading="eager"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-black/60 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-3 left-4 right-4 text-white text-xs bg-black/60 backdrop-blur-sm p-2 rounded-lg border border-white/10">
+                Bản đồ địa hình Việt Nam – Không gian biển hơn 1.000.000 km²
+              </div>
+            </div>
+            <div className="lg:col-span-7 p-6 sm:p-10 space-y-4">
+              <span className="text-xs font-bold uppercase tracking-wider text-heritage-ocean bg-heritage-oceanMist px-3 py-1 rounded-full border border-heritage-ocean/20">
+                Vị thế địa chiến lược • Bờ biển &gt; 3.260 km
+              </span>
+              <h4 className="text-2xl sm:text-3xl font-heading font-bold text-heritage-navy leading-tight">
+                Không Gian Sinh Tồn & Cửa Ngõ Tiến Ra Đại Dương
+              </h4>
+              <p className="text-sm sm:text-base text-heritage-dark leading-relaxed">
+                Việt Nam sở hữu dải bờ biển uốn lượn hình chữ S dài hơn 3.260 km từ Móng Cái đến Hà Tiên, với hơn 3.000 hòn đảo lớn nhỏ và 2 quần đảo tiền tiêu Hoàng Sa, Trường Sa. Nằm trên tuyến hàng hải quốc tế nhộn nhịp bậc nhất nối Thái Bình Dương và Ấn Độ Dương, biển Việt Nam nắm giữ tiềm năng kinh tế và an ninh quốc phòng vô giá.
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                <div className="p-3 rounded-xl bg-heritage-oceanMist/50 border border-heritage-ocean/20 text-center">
+                  <div className="text-xl font-heading font-black text-heritage-ocean">&gt; 3.260 km</div>
+                  <div className="text-[11px] text-heritage-muted mt-0.5">Đường bờ biển</div>
+                </div>
+                <div className="p-3 rounded-xl bg-heritage-oceanMist/50 border border-heritage-ocean/20 text-center">
+                  <div className="text-xl font-heading font-black text-heritage-ocean">&gt; 1.000.000 km²</div>
+                  <div className="text-[11px] text-heritage-muted mt-0.5">Vùng đặc quyền kinh tế</div>
+                </div>
+                <div className="p-3 rounded-xl bg-heritage-oceanMist/50 border border-heritage-ocean/20 text-center col-span-2 sm:col-span-1">
+                  <div className="text-xl font-heading font-black text-heritage-ocean">&gt; 3.000</div>
+                  <div className="text-[11px] text-heritage-muted mt-0.5">Hòn đảo lớn nhỏ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 6 Lợi thế lớn cards with Images */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {maritimePotentials.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-2xl p-6 border border-heritage-ocean/20 shadow-ocean hover:shadow-ocean-hover hover:-translate-y-1 transition-all duration-300"
+              className="bg-white rounded-2xl border border-heritage-ocean/20 shadow-ocean hover:shadow-ocean-hover hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group"
             >
-              <div className="flex items-center justify-between mb-3">
-                <div className="w-10 h-10 rounded-xl bg-heritage-oceanMist flex items-center justify-center">
-                  {getIcon(item.icon)}
+              {item.image && (
+                <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
+                  <img
+                    src={item.image}
+                    alt={item.imageAlt || item.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <span className="absolute top-3 right-3 text-xs font-bold text-white bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-full border border-white/20">
+                    {item.value}
+                  </span>
                 </div>
-                <span className="text-xs font-bold text-heritage-ocean bg-heritage-oceanMist/80 px-2.5 py-1 rounded-full border border-heritage-ocean/20">
-                  {item.value}
-                </span>
+              )}
+              <div className="p-5 flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2.5 mb-2">
+                    <div className="w-8 h-8 rounded-lg bg-heritage-oceanMist flex items-center justify-center shrink-0">
+                      {getIcon(item.icon)}
+                    </div>
+                    <h4 className="text-base sm:text-lg font-heading font-bold text-heritage-navy leading-snug">
+                      {item.title}
+                    </h4>
+                  </div>
+                  <p className="text-xs sm:text-sm text-heritage-muted leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
               </div>
-
-              <h4 className="text-lg font-heading font-bold text-heritage-navy mb-2">
-                {item.title}
-              </h4>
-
-              <p className="text-xs sm:text-sm text-heritage-muted leading-relaxed">
-                {item.description}
-              </p>
             </div>
           ))}
         </div>
@@ -235,67 +323,85 @@ export const MaritimeSection: React.FC = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {strategicSolutions.map((sol, index) => (
-            <div
-              key={sol.id}
-              className="bg-white rounded-2xl p-6 sm:p-8 border border-heritage-ocean/30 shadow-ocean hover:shadow-ocean-hover transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                {/* Header with icon & index badge */}
-                <div className="flex items-center justify-between gap-3 mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl bg-heritage-oceanMist flex items-center justify-center shrink-0">
-                      {getIcon(sol.iconName)}
+          {strategicSolutions.map((sol, index) => {
+            const imgData = solutionImages[sol.id];
+
+            return (
+              <div
+                key={sol.id}
+                className="bg-white rounded-2xl border border-heritage-ocean/30 shadow-ocean hover:shadow-ocean-hover transition-all duration-300 flex flex-col justify-between overflow-hidden group"
+              >
+                {/* Solution Visual Image Header */}
+                {imgData && (
+                  <div className="relative aspect-[16/9] w-full overflow-hidden bg-gray-100">
+                    <img
+                      src={imgData.src}
+                      alt={imgData.alt}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    <span className="absolute top-3 left-3 text-[11px] font-bold uppercase tracking-wider text-white bg-heritage-ocean/90 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20">
+                      Giải pháp {index + 1}
+                    </span>
+                    <div className="absolute bottom-2.5 left-4 right-4 text-xs text-white/90 italic line-clamp-1">
+                      {imgData.caption}
                     </div>
-                    <div>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-heritage-ocean">
-                        Giải pháp chiến lược {index + 1}
-                      </span>
+                  </div>
+                )}
+
+                <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+                  <div>
+                    {/* Header with icon */}
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-xl bg-heritage-oceanMist flex items-center justify-center shrink-0">
+                        {getIcon(sol.iconName)}
+                      </div>
                       <h4 className="text-lg sm:text-xl font-heading font-bold text-heritage-navy leading-snug">
                         {sol.title}
                       </h4>
                     </div>
+
+                    {/* Short Description */}
+                    <p className="text-sm text-heritage-muted font-medium mb-4 leading-relaxed">
+                      {sol.description}
+                    </p>
+
+                    {/* Specific Measures List */}
+                    <div className="space-y-2 mb-6">
+                      <span className="text-xs font-bold uppercase tracking-wider text-heritage-navy block">
+                        Biện pháp cụ thể:
+                      </span>
+                      <ul className="space-y-2">
+                        {sol.measures.map((m, i) => (
+                          <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-heritage-dark leading-relaxed">
+                            <span className="text-heritage-ocean font-bold mt-0.5">•</span>
+                            <span>{m}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Real world practical example & significance */}
+                  <div className="space-y-3 pt-4 border-t border-gray-100">
+                    {sol.realWorldExample && (
+                      <div className="p-3.5 rounded-xl bg-heritage-oceanMist/60 border border-heritage-ocean/20 text-xs sm:text-sm text-heritage-navy leading-relaxed">
+                        <strong className="text-heritage-ocean block mb-1 uppercase tracking-wider text-[11px]">
+                          Ví dụ thực tiễn:
+                        </strong>
+                        {sol.realWorldExample}
+                      </div>
+                    )}
+
+                    <div className="text-xs text-heritage-muted italic">
+                      <strong>Ý nghĩa:</strong> {sol.significance}
+                    </div>
                   </div>
                 </div>
-
-                {/* Short Description */}
-                <p className="text-sm text-heritage-muted font-medium mb-4 leading-relaxed">
-                  {sol.description}
-                </p>
-
-                {/* Specific Measures List */}
-                <div className="space-y-2 mb-6">
-                  <span className="text-xs font-bold uppercase tracking-wider text-heritage-navy block">
-                    Biện pháp cụ thể:
-                  </span>
-                  <ul className="space-y-2">
-                    {sol.measures.map((m, i) => (
-                      <li key={i} className="flex items-start gap-2 text-xs sm:text-sm text-heritage-dark leading-relaxed">
-                        <span className="text-heritage-ocean font-bold mt-0.5">•</span>
-                        <span>{m}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
-
-              {/* Real world practical example & significance */}
-              <div className="space-y-3 pt-4 border-t border-gray-100">
-                {sol.realWorldExample && (
-                  <div className="p-3.5 rounded-xl bg-heritage-oceanMist/60 border border-heritage-ocean/20 text-xs sm:text-sm text-heritage-navy leading-relaxed">
-                    <strong className="text-heritage-ocean block mb-1 uppercase tracking-wider text-[11px]">
-                      Ví dụ thực tiễn:
-                    </strong>
-                    {sol.realWorldExample}
-                  </div>
-                )}
-
-                <div className="text-xs text-heritage-muted italic">
-                  <strong>Ý nghĩa:</strong> {sol.significance}
-                </div>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -305,6 +411,26 @@ export const MaritimeSection: React.FC = () => {
           
           {/* Subtle star / pattern watermark */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-heritage-gold/10 rounded-full blur-3xl pointer-events-none" />
+
+          {/* Inspirational Image Banner (Truong Sa Island) */}
+          <div className="relative z-10 max-w-4xl mx-auto mb-10 rounded-2xl overflow-hidden border border-white/20 shadow-xl aspect-[21/9]">
+            <img
+              src="/images/sovereignty.jpg"
+              alt="Đảo Trường Sa – Biểu tượng chủ quyền biển đảo Việt Nam"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4 sm:p-6">
+              <div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-heritage-goldLight bg-black/50 px-2.5 py-1 rounded-full border border-white/20">
+                  Cột mốc chủ quyền giữa trùng khơi
+                </span>
+                <h4 className="text-lg sm:text-2xl font-heading font-bold text-white mt-1">
+                  Đảo Trường Sa – Nơi ngọn cờ Tổ quốc kiêu hãnh tung bay
+                </h4>
+              </div>
+            </div>
+          </div>
 
           <div className="relative z-10 max-w-4xl mx-auto text-center mb-10">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-heritage-gold/50 text-heritage-goldLight text-xs font-bold uppercase tracking-widest mb-4">
