@@ -73,7 +73,7 @@ export const MaritimeMapExplorer: React.FC = () => {
           </div>
 
           {/* SVG Map of Vietnam Coastline with stylized curved representation */}
-          <div className="relative w-full max-w-[420px] aspect-[3/4] flex items-center justify-center">
+          <div className="relative w-full max-w-[440px] aspect-square flex items-center justify-center">
             
             {/* S-curve path representation of Vietnam's eastern seaboard */}
             <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-lg">
@@ -105,26 +105,53 @@ export const MaritimeMapExplorer: React.FC = () => {
               />
 
               {/* Sea Area Annotation */}
-              <text x="64" y="32" fill="#3D8FA8" fontSize="3" letterSpacing="0.8" fontWeight="bold" opacity="0.6">
-                BIỂN ĐÔNG VIỆT NAM
-              </text>
-              <text x="64" y="36" fill="#3D8FA8" fontSize="2.2" opacity="0.5">
-                Vùng đặc quyền kinh tế &gt; 1.000.000 km²
-              </text>
+              <g className="pointer-events-none select-none">
+                <text
+                  x="74"
+                  y="26"
+                  fill="#4EA2B8"
+                  fontSize="2.4"
+                  fontWeight="bold"
+                  letterSpacing="0.2"
+                  textAnchor="middle"
+                  opacity="0.9"
+                >
+                  BIỂN ĐÔNG VIỆT NAM
+                </text>
+                <text
+                  x="74"
+                  y="29.5"
+                  fill="#7AC3D6"
+                  fontSize="1.6"
+                  textAnchor="middle"
+                  opacity="0.75"
+                >
+                  Vùng đặc quyền kinh tế &gt; 1.000.000 km²
+                </text>
+              </g>
 
               {/* Connecting dashed lines from mainland to archipelagos */}
-              <line x1="66" y1="44" x2="80" y2="42" stroke="#DFBF7A" strokeWidth="0.5" strokeDasharray="1 1" opacity="0.6" />
-              <line x1="70" y1="65" x2="84" y2="76" stroke="#DFBF7A" strokeWidth="0.5" strokeDasharray="1 1" opacity="0.6" />
+              <line x1="61" y1="44" x2="74" y2="38" stroke="#DFBF7A" strokeWidth="0.6" strokeDasharray="1.5 1.5" opacity="0.6" />
+              <line x1="69" y1="64" x2="74" y2="76" stroke="#DFBF7A" strokeWidth="0.6" strokeDasharray="1.5 1.5" opacity="0.6" />
 
-              {/* Hoang Sa Box Annotation */}
-              <rect x="74" y="38" width="16" height="8" rx="1.5" fill="#184758" stroke="#DFBF7A" strokeWidth="0.5" opacity="0.8" />
-              <text x="82" y="42.5" fill="#FFF" fontSize="2" fontWeight="bold" textAnchor="middle">QĐ. HOÀNG SA</text>
-              <text x="82" y="44.5" fill="#DFBF7A" fontSize="1.4" textAnchor="middle">(Việt Nam)</text>
+              {/* Hoang Sa Archipelago Reef Cluster Representation */}
+              <g className="pointer-events-none" opacity="0.8">
+                <circle cx="79" cy="35" r="0.7" fill="#DFBF7A" />
+                <circle cx="82" cy="35" r="0.9" fill="#FFFFFF" />
+                <circle cx="85" cy="37" r="0.6" fill="#DFBF7A" />
+                <circle cx="78" cy="40" r="0.5" fill="#DFBF7A" />
+                <circle cx="84" cy="41" r="0.8" fill="#FFFFFF" />
+              </g>
 
-              {/* Truong Sa Box Annotation */}
-              <rect x="76" y="72" width="16" height="8" rx="1.5" fill="#184758" stroke="#DFBF7A" strokeWidth="0.5" opacity="0.8" />
-              <text x="84" y="76.5" fill="#FFF" fontSize="2" fontWeight="bold" textAnchor="middle">QĐ. TRƯỜNG SA</text>
-              <text x="84" y="78.5" fill="#DFBF7A" fontSize="1.4" textAnchor="middle">(Việt Nam)</text>
+              {/* Truong Sa Archipelago Reef Cluster Representation */}
+              <g className="pointer-events-none" opacity="0.8">
+                <circle cx="78" cy="73" r="0.7" fill="#DFBF7A" />
+                <circle cx="82" cy="73" r="0.9" fill="#FFFFFF" />
+                <circle cx="86" cy="75" r="0.6" fill="#DFBF7A" />
+                <circle cx="77" cy="79" r="0.8" fill="#FFFFFF" />
+                <circle cx="82" cy="80" r="0.6" fill="#DFBF7A" />
+                <circle cx="85" cy="80" r="0.7" fill="#DFBF7A" />
+              </g>
             </svg>
 
             {/* Interactive Location Markers Overlay */}
@@ -139,35 +166,79 @@ export const MaritimeMapExplorer: React.FC = () => {
                     left: `${loc.coordinates.x}%`,
                     top: `${loc.coordinates.y}%`,
                   }}
-                  className="absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer group/pin z-20"
+                  className={`absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer group/pin ${
+                    isIsland ? 'z-20' : 'z-10'
+                  }`}
                   onClick={() => setSelectedLocation(loc)}
                 >
-                  {/* Pulse ring when selected */}
-                  {isSelected && (
-                    <span className="absolute -inset-2 rounded-full bg-heritage-gold animate-ping opacity-60" />
+                  {isIsland ? (
+                    /* Sovereign Archipelago Unified Badge */
+                    <div
+                      className={`group/island relative flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl border transition-all duration-300 shadow-lg select-none whitespace-nowrap ${
+                        isSelected
+                          ? 'bg-heritage-gold text-heritage-navy border-white ring-4 ring-heritage-gold/40 scale-105 shadow-2xl font-bold'
+                          : 'bg-[#103544]/95 hover:bg-[#164356] text-white border-heritage-gold/60 hover:border-heritage-gold hover:scale-105'
+                      }`}
+                    >
+                      {/* Red anchor icon */}
+                      <div
+                        className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center shrink-0 shadow-sm ${
+                          isSelected
+                            ? 'bg-heritage-red text-white ring-2 ring-heritage-navy'
+                            : 'bg-heritage-red text-white group-hover/island:scale-110 transition-transform'
+                        }`}
+                      >
+                        <Anchor className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                      </div>
+
+                      {/* Island Name & Sovereignty Label */}
+                      <div className="text-left leading-tight pr-0.5">
+                        <div
+                          className={`text-[10px] sm:text-[11px] font-bold tracking-wide ${
+                            isSelected ? 'text-heritage-navy' : 'text-white'
+                          }`}
+                        >
+                          {loc.id === 'hoangsa' ? 'QĐ. HOÀNG SA' : 'QĐ. TRƯỜNG SA'}
+                        </div>
+                        <div
+                          className={`text-[8.5px] sm:text-[9.5px] font-semibold ${
+                            isSelected ? 'text-heritage-navy/80' : 'text-heritage-goldLight'
+                          }`}
+                        >
+                          (Việt Nam)
+                        </div>
+                      </div>
+
+                      {/* Pulse ring when selected */}
+                      {isSelected && (
+                        <span className="absolute -inset-1 rounded-xl bg-heritage-gold animate-ping opacity-35 pointer-events-none" />
+                      )}
+                    </div>
+                  ) : (
+                    /* Standard Coastal City / Port Marker */
+                    <>
+                      {/* Pulse ring when selected */}
+                      {isSelected && (
+                        <span className="absolute -inset-2 rounded-full bg-heritage-gold animate-ping opacity-60 pointer-events-none" />
+                      )}
+
+                      {/* Marker Pin Icon */}
+                      <div
+                        className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center transition-all duration-300 shadow-md ${
+                          isSelected
+                            ? 'bg-heritage-gold text-heritage-navy scale-125 ring-2 ring-white font-bold'
+                            : 'bg-heritage-oceanLight text-white hover:bg-heritage-gold hover:text-heritage-navy hover:scale-110'
+                        }`}
+                      >
+                        <MapPin className="w-3.5 h-3.5" />
+                      </div>
+
+                      {/* Tooltip on hover */}
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover/pin:block whitespace-nowrap bg-heritage-navy/95 text-white text-[11px] px-2.5 py-1 rounded shadow-lg border border-white/20 pointer-events-none z-30">
+                        {loc.name}
+                      </div>
+                    </>
                   )}
-
-                  {/* Marker Pin Icon */}
-                  <div
-                    className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 shadow-md ${
-                      isSelected
-                        ? 'bg-heritage-gold text-heritage-navy scale-125 ring-2 ring-white font-bold'
-                        : isIsland
-                        ? 'bg-heritage-red text-white hover:scale-110'
-                        : 'bg-heritage-oceanLight text-white hover:bg-heritage-gold hover:text-heritage-navy hover:scale-110'
-                    }`}
-                  >
-                    {isIsland ? (
-                      <Anchor className="w-3.5 h-3.5" />
-                    ) : (
-                      <MapPin className="w-3.5 h-3.5" />
-                    )}
-                  </div>
-
-                  {/* Tooltip on hover */}
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover/pin:block whitespace-nowrap bg-heritage-navy/90 text-white text-[11px] px-2.5 py-1 rounded shadow-lg border border-white/20 pointer-events-none z-30">
-                    {loc.name}
-                  </div>
                 </div>
               );
             })}

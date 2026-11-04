@@ -250,7 +250,7 @@ export const coastalLocations: CoastalLocation[] = [
     type: "Cụm Cảng biển",
     description: "Cửa ngõ xuất nhập khẩu hàng hải trọng yếu của toàn bộ khu vực phía Bắc, sở hữu cảng nước sâu đón tàu container tải trọng lớn.",
     strategicImportance: "Đầu mối giao thương hàng hải quốc tế kết nối hành lang kinh tế Côn Minh - Lào Cai - Hà Nội - Hải Phòng.",
-    coordinates: { x: 62, y: 19 }
+    coordinates: { x: 60, y: 19 }
   },
   {
     id: "halong",
@@ -259,7 +259,7 @@ export const coastalLocations: CoastalLocation[] = [
     type: "Du lịch biển",
     description: "Di sản thiên nhiên thế giới với hàng ngàn đảo đá vôi kỳ vĩ, trung tâm du lịch sinh thái và nghỉ dưỡng quốc tế hàng đầu.",
     strategicImportance: "Biểu tượng du lịch quốc tế, phát triển mô hình du lịch xanh không rác thải nhựa đại dương.",
-    coordinates: { x: 68, y: 21 }
+    coordinates: { x: 67, y: 17 }
   },
   {
     id: "danang",
@@ -268,7 +268,7 @@ export const coastalLocations: CoastalLocation[] = [
     type: "Cụm Cảng biển",
     description: "Trung tâm kinh tế biển năng động nhất miền Trung, cửa ngõ ra biển của Hành lang kinh tế Đông - Tây (EWEC).",
     strategicImportance: "Đầu mối logistics liên quốc gia nối liền Myanmar, Thái Lan, Lào ra cảng Tiên Sa và biển Đông.",
-    coordinates: { x: 66, y: 44 }
+    coordinates: { x: 61, y: 44 }
   },
   {
     id: "hoangsa",
@@ -277,7 +277,7 @@ export const coastalLocations: CoastalLocation[] = [
     type: "Quần đảo chủ quyền",
     description: "Vùng lãnh thổ thiêng liêng không thể tách rời của Tổ quốc Việt Nam, có vị trí địa chiến lược và tiềm năng ngư trường lớn.",
     strategicImportance: "Vị trí địa chính trị kiểm soát các tuyến hàng hải quốc tế trên Biển Đông và khẳng định chủ quyền bất khả xâm phạm.",
-    coordinates: { x: 80, y: 42 }
+    coordinates: { x: 80, y: 38 }
   },
   {
     id: "nhatrang",
@@ -286,7 +286,7 @@ export const coastalLocations: CoastalLocation[] = [
     type: "Du lịch biển",
     description: "Vịnh biển đẹp thế giới kết hợp với vịnh nước sâu Vân Phong có tiềm năng xây dựng cảng trung chuyển container quốc tế.",
     strategicImportance: "Trung tâm nghiên cứu đại dương học, du lịch biển cao cấp và cụm công nghiệp hàng hải miền Trung.",
-    coordinates: { x: 73, y: 64 }
+    coordinates: { x: 69, y: 64 }
   },
   {
     id: "truongsa",
@@ -295,7 +295,7 @@ export const coastalLocations: CoastalLocation[] = [
     type: "Quần đảo chủ quyền",
     description: "Quần đảo tiền tiêu phía Đông Nam của Tổ quốc với hệ thống đảo chìm, đảo nổi và ngư trường khai thác hải sản xa bờ dồi dào.",
     strategicImportance: "Lá chắn bảo vệ sườn phía Đông của đất nước; trung tâm hậu cần nghề cá và cứu hộ cứu nạn trên biển.",
-    coordinates: { x: 84, y: 76 }
+    coordinates: { x: 80, y: 76 }
   },
   {
     id: "caimep",
@@ -304,7 +304,7 @@ export const coastalLocations: CoastalLocation[] = [
     type: "Cụm Cảng biển",
     description: "Cảng nước sâu hiện đại nhất Việt Nam, tiếp nhận tàu mẹ sức chở lên đến 214.000 DWT đi thẳng sang Bắc Mỹ và châu Âu.",
     strategicImportance: "Trọng điểm logistics quốc tế của Vùng kinh tế trọng điểm phía Nam, giảm thiểu chi phí trung chuyển cho hàng xuất khẩu.",
-    coordinates: { x: 60, y: 78 }
+    coordinates: { x: 57, y: 78 }
   },
   {
     id: "camau",
@@ -322,7 +322,7 @@ export const coastalLocations: CoastalLocation[] = [
     type: "Du lịch biển",
     description: "Đảo Ngọc lớn nhất Việt Nam, thành phố đảo đầu tiên với hệ sinh thái du lịch, vui chơi giải trí và nghỉ dưỡng đẳng cấp toàn cầu.",
     strategicImportance: "Cực tăng trưởng kinh tế du lịch dịch vụ Tây Nam, giao lưu kinh tế với các nước trong vịnh Thái Lan.",
-    coordinates: { x: 38, y: 82 }
+    coordinates: { x: 37, y: 82 }
   }
 ];
 
