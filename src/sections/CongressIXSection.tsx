@@ -34,14 +34,6 @@ export const CongressIXSection: React.FC = () => {
             ))}
           </ul>
         </div>
-
-        {/* In-depth Analytical Commentary */}
-        <div className="p-4 rounded-xl bg-heritage-surfaceRed border border-red-200/80 text-sm leading-relaxed text-red-950">
-          <span className="font-bold text-heritage-red uppercase text-xs tracking-wider block mb-1">
-            Phân tích lý luận:
-          </span>
-          <p className="italic">"{pillar.analysis}"</p>
-        </div>
       </div>
     )
   }));
@@ -125,13 +117,6 @@ export const CongressIXSection: React.FC = () => {
                 ))}
               </ul>
             </div>
-
-            <div className="p-4 rounded-xl bg-heritage-ivory border border-heritage-gold/30 text-xs sm:text-sm text-heritage-dark leading-relaxed">
-              <strong className="text-heritage-red block mb-1 uppercase tracking-wider text-[11px]">
-                Phân tích:
-              </strong>
-              {congressIXContext.internationalContext.analysis}
-            </div>
           </div>
 
           {/* Card 2: Bối cảnh trong nước */}
@@ -155,13 +140,6 @@ export const CongressIXSection: React.FC = () => {
                 ))}
               </ul>
             </div>
-
-            <div className="p-4 rounded-xl bg-heritage-ivory border border-heritage-gold/30 text-xs sm:text-sm text-heritage-dark leading-relaxed">
-              <strong className="text-heritage-goldDark block mb-1 uppercase tracking-wider text-[11px]">
-                Phân tích:
-              </strong>
-              {congressIXContext.domesticContext.analysis}
-            </div>
           </div>
 
         </div>
@@ -176,9 +154,6 @@ export const CongressIXSection: React.FC = () => {
               B. Sáu Nội Dung Cơ Bản Của Đại Hội IX
             </h3>
           </div>
-          <span className="text-xs text-heritage-muted hidden sm:inline">
-            Nhấn vào từng mục để xem phân tích chi tiết
-          </span>
         </div>
 
         <Accordion items={pillarAccordionItems} defaultOpenId="kinh-te-thi-truong-xhcn" theme="heritage" />
@@ -229,10 +204,6 @@ export const CongressIXSection: React.FC = () => {
                 ))}
               </ul>
             </div>
-
-            <div className="p-3.5 rounded-xl bg-emerald-50 text-emerald-950 text-xs leading-relaxed italic border border-emerald-200/60">
-              "{congressIXEvaluation.results.analysis}"
-            </div>
           </div>
 
           {/* Card 2: Hạn chế */}
@@ -254,10 +225,6 @@ export const CongressIXSection: React.FC = () => {
                 ))}
               </ul>
             </div>
-
-            <div className="p-3.5 rounded-xl bg-amber-50 text-amber-950 text-xs leading-relaxed italic border border-amber-200/60">
-              "{congressIXEvaluation.limitations.analysis}"
-            </div>
           </div>
 
           {/* Card 3: Ý nghĩa */}
@@ -278,10 +245,6 @@ export const CongressIXSection: React.FC = () => {
                   </li>
                 ))}
               </ul>
-            </div>
-
-            <div className="p-3.5 rounded-xl bg-heritage-surfaceRed text-red-950 text-xs leading-relaxed italic border border-red-200/60">
-              "{congressIXEvaluation.significance.analysis}"
             </div>
           </div>
 

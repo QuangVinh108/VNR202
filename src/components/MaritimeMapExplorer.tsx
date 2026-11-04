@@ -129,29 +129,6 @@ export const MaritimeMapExplorer: React.FC = () => {
                   Vùng đặc quyền kinh tế &gt; 1.000.000 km²
                 </text>
               </g>
-
-              {/* Connecting dashed lines from mainland to archipelagos */}
-              <line x1="61" y1="44" x2="74" y2="38" stroke="#DFBF7A" strokeWidth="0.6" strokeDasharray="1.5 1.5" opacity="0.6" />
-              <line x1="69" y1="64" x2="74" y2="76" stroke="#DFBF7A" strokeWidth="0.6" strokeDasharray="1.5 1.5" opacity="0.6" />
-
-              {/* Hoang Sa Archipelago Reef Cluster Representation */}
-              <g className="pointer-events-none" opacity="0.8">
-                <circle cx="79" cy="35" r="0.7" fill="#DFBF7A" />
-                <circle cx="82" cy="35" r="0.9" fill="#FFFFFF" />
-                <circle cx="85" cy="37" r="0.6" fill="#DFBF7A" />
-                <circle cx="78" cy="40" r="0.5" fill="#DFBF7A" />
-                <circle cx="84" cy="41" r="0.8" fill="#FFFFFF" />
-              </g>
-
-              {/* Truong Sa Archipelago Reef Cluster Representation */}
-              <g className="pointer-events-none" opacity="0.8">
-                <circle cx="78" cy="73" r="0.7" fill="#DFBF7A" />
-                <circle cx="82" cy="73" r="0.9" fill="#FFFFFF" />
-                <circle cx="86" cy="75" r="0.6" fill="#DFBF7A" />
-                <circle cx="77" cy="79" r="0.8" fill="#FFFFFF" />
-                <circle cx="82" cy="80" r="0.6" fill="#DFBF7A" />
-                <circle cx="85" cy="80" r="0.7" fill="#DFBF7A" />
-              </g>
             </svg>
 
             {/* Interactive Location Markers Overlay */}

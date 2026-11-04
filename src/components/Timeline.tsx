@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TimelineItem } from '../types';
 import { DetailModal } from './DetailModal';
-import { Calendar, ArrowRight, Bookmark } from 'lucide-react';
+import { Calendar, Bookmark } from 'lucide-react';
 
 interface TimelineProps {
   items: TimelineItem[];
@@ -10,49 +10,14 @@ interface TimelineProps {
 
 export const Timeline: React.FC<TimelineProps> = ({ items, theme = 'heritage' }) => {
   const [selectedItem, setSelectedItem] = useState<TimelineItem | null>(null);
-  const [filterCategory, setFilterCategory] = useState<string>('all');
 
   const isOcean = theme === 'ocean';
 
-  const filteredItems = filterCategory === 'all'
-    ? items
-    : items.filter(item => item.category === filterCategory);
-
-  const categories = [
-    { id: 'all', label: 'Tất cả sự kiện' },
-    { id: 'economic', label: 'Kinh tế & Thể chế' },
-    { id: 'political', label: 'Xây dựng Đảng & Chính trị' },
-    { id: 'social', label: 'Xã hội & Đại đoàn kết' },
-    { id: 'foreign', label: 'Đối ngoại & WTO' },
-    { id: 'maritime', label: 'Chiến lược Biển' },
-  ].filter(cat => cat.id === 'all' || items.some(i => i.category === cat.id));
-
   return (
     <div className="relative">
-      {/* Category filter tabs */}
-      {categories.length > 2 && (
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setFilterCategory(cat.id)}
-              className={`px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all ${
-                filterCategory === cat.id
-                  ? isOcean
-                    ? 'bg-heritage-ocean text-white shadow-md'
-                    : 'bg-heritage-red text-white shadow-md'
-                  : 'bg-heritage-ivoryLight text-heritage-dark border border-heritage-gold/30 hover:bg-white'
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
-      )}
-
       {/* Timeline track container */}
       <div className="relative border-l-2 md:border-l-0 md:before:absolute md:before:left-1/2 md:before:top-0 md:before:bottom-0 md:before:w-0.5 md:before:-translate-x-1/2 md:before:bg-heritage-gold/40 border-heritage-gold/40 ml-4 md:ml-0 space-y-8 md:space-y-12">
-        {filteredItems.map((item, index) => {
+        {items.map((item, index) => {
           const isEven = index % 2 === 0;
 
           return (
@@ -118,7 +83,7 @@ export const Timeline: React.FC<TimelineProps> = ({ items, theme = 'heritage' })
 
                   {/* Key Highlights pill list */}
                   {item.highlights && item.highlights.length > 0 && (
-                    <div className="space-y-1.5 mb-4 pt-3 border-t border-gray-100">
+                    <div className="space-y-1.5 pt-3 border-t border-gray-100">
                       {item.highlights.slice(0, 2).map((hl, i) => (
                         <div key={i} className="text-xs text-heritage-dark flex items-start gap-1.5">
                           <span className="text-heritage-goldDark font-bold mt-0.5">•</span>
@@ -127,21 +92,6 @@ export const Timeline: React.FC<TimelineProps> = ({ items, theme = 'heritage' })
                       ))}
                     </div>
                   )}
-
-                  {/* Card Action link */}
-                  <div className="flex items-center justify-between pt-2 text-xs font-semibold">
-                    <span
-                      className={`inline-flex items-center gap-1 ${
-                        isOcean ? 'text-heritage-ocean' : 'text-heritage-red'
-                      } group-hover:underline`}
-                    >
-                      Xem phân tích & chi tiết nghị quyết
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                    <span className="text-heritage-muted/60 text-[10px] uppercase">
-                      Chi tiết
-                    </span>
-                  </div>
                 </div>
               </div>
             </div>

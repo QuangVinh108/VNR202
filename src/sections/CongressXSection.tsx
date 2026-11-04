@@ -102,13 +102,6 @@ export const CongressXSection: React.FC = () => {
                 ))}
               </ul>
             </div>
-
-            <div className="p-4 rounded-xl bg-heritage-ivory border border-heritage-gold/30 text-xs sm:text-sm text-heritage-dark leading-relaxed">
-              <strong className="text-heritage-ocean block mb-1 uppercase tracking-wider text-[11px]">
-                Phân tích:
-              </strong>
-              {congressXContext.internationalContext.analysis}
-            </div>
           </div>
 
           {/* Trong nước */}
@@ -131,13 +124,6 @@ export const CongressXSection: React.FC = () => {
                   </li>
                 ))}
               </ul>
-            </div>
-
-            <div className="p-4 rounded-xl bg-heritage-ivory border border-heritage-gold/30 text-xs sm:text-sm text-heritage-dark leading-relaxed">
-              <strong className="text-heritage-red block mb-1 uppercase tracking-wider text-[11px]">
-                Phân tích:
-              </strong>
-              {congressXContext.domesticContext.analysis}
             </div>
           </div>
 
@@ -182,14 +168,9 @@ export const CongressXSection: React.FC = () => {
                   {lesson.principle}
                 </p>
 
-                <p className="text-sm text-heritage-muted leading-relaxed mb-4">
+                <p className="text-sm text-heritage-muted leading-relaxed">
                   {lesson.content}
                 </p>
-              </div>
-
-              <div className="p-3 rounded-xl bg-heritage-ivoryLight border border-heritage-gold/30 text-xs text-heritage-dark italic">
-                <span className="font-bold text-heritage-navy not-italic block mb-0.5">Phân tích:</span>
-                "{lesson.analysis}"
               </div>
             </div>
           ))}
@@ -222,7 +203,7 @@ export const CongressXSection: React.FC = () => {
                   {pillar.subtitle}
                 </p>
 
-                <ul className="space-y-2.5 mb-6">
+                <ul className="space-y-2.5">
                   {pillar.points.map((pt, idx) => (
                     <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-heritage-dark leading-relaxed">
                       <span className="text-heritage-red font-bold mt-0.5">•</span>
@@ -230,13 +211,6 @@ export const CongressXSection: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
-
-              <div className="p-3.5 rounded-xl bg-heritage-ivory border border-heritage-gold/30 text-xs sm:text-sm text-heritage-dark leading-relaxed">
-                <strong className="text-heritage-navy block mb-0.5 uppercase tracking-wider text-[11px]">
-                  Ý nghĩa lý luận & Đột phá:
-                </strong>
-                {pillar.analysis}
               </div>
             </div>
           ))}
@@ -362,9 +336,6 @@ export const CongressXSection: React.FC = () => {
                 ))}
               </ul>
             </div>
-            <div className="p-3.5 rounded-xl bg-emerald-50 text-emerald-950 text-xs leading-relaxed italic border border-emerald-200/60">
-              "{congressXEvaluation.results.analysis}"
-            </div>
           </div>
 
           {/* Hạn chế */}
@@ -385,9 +356,6 @@ export const CongressXSection: React.FC = () => {
                 ))}
               </ul>
             </div>
-            <div className="p-3.5 rounded-xl bg-amber-50 text-amber-950 text-xs leading-relaxed italic border border-amber-200/60">
-              "{congressXEvaluation.limitations.analysis}"
-            </div>
           </div>
 
           {/* Ý nghĩa */}
@@ -407,9 +375,6 @@ export const CongressXSection: React.FC = () => {
                   </li>
                 ))}
               </ul>
-            </div>
-            <div className="p-3.5 rounded-xl bg-heritage-surfaceRed text-red-950 text-xs leading-relaxed italic border border-red-200/60">
-              "{congressXEvaluation.significance.analysis}"
             </div>
           </div>
         </div>

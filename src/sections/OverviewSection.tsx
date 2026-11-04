@@ -140,13 +140,8 @@ export const OverviewSection: React.FC = () => {
                   <h3 className="text-xl sm:text-2xl font-heading font-bold text-heritage-navy mb-1 group-hover:text-heritage-red transition-colors">
                     {topic.title}
                   </h3>
-                  <p className="text-xs font-semibold text-heritage-goldDark mb-3">
+                  <p className="text-xs font-semibold text-heritage-goldDark mb-4">
                     {topic.subtitle}
-                  </p>
-
-                  {/* Short Description */}
-                  <p className="text-sm text-heritage-muted leading-relaxed mb-5">
-                    {topic.description}
                   </p>
 
                   {/* Sub-sections bullet points */}
@@ -164,12 +159,8 @@ export const OverviewSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Bottom Actions & Stats pill */}
-                <div className="pt-4 border-t border-gray-100 space-y-3">
-                  <div className="text-[11px] font-medium text-heritage-muted bg-heritage-ivory px-3 py-1.5 rounded-lg border border-heritage-gold/20 text-center">
-                    {topic.statsCount}
-                  </div>
-
+                {/* Bottom Actions */}
+                <div className="pt-4 border-t border-gray-100">
                   <button
                     onClick={() => scrollTo(topic.id)}
                     className={`w-full py-2.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all ${

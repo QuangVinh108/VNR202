@@ -23,7 +23,6 @@ import {
   Network,
   CheckCircle2,
   AlertOctagon,
-  Sparkles,
   HeartHandshake
 } from 'lucide-react';
 
@@ -221,11 +220,6 @@ export const MaritimeSection: React.FC = () => {
                   {res.content}
                 </p>
               </div>
-
-              <div className="pt-4 mt-6 border-t border-gray-100 text-xs font-semibold text-heritage-ocean flex items-center gap-1">
-                <span>Định hướng chiến lược quốc gia</span>
-                <Sparkles className="w-3.5 h-3.5 text-heritage-goldDark" />
-              </div>
             </div>
           ))}
         </div>
@@ -380,22 +374,6 @@ export const MaritimeSection: React.FC = () => {
                           </li>
                         ))}
                       </ul>
-                    </div>
-                  </div>
-
-                  {/* Real world practical example & significance */}
-                  <div className="space-y-3 pt-4 border-t border-gray-100">
-                    {sol.realWorldExample && (
-                      <div className="p-3.5 rounded-xl bg-heritage-oceanMist/60 border border-heritage-ocean/20 text-xs sm:text-sm text-heritage-navy leading-relaxed">
-                        <strong className="text-heritage-ocean block mb-1 uppercase tracking-wider text-[11px]">
-                          Ví dụ thực tiễn:
-                        </strong>
-                        {sol.realWorldExample}
-                      </div>
-                    )}
-
-                    <div className="text-xs text-heritage-muted italic">
-                      <strong>Ý nghĩa:</strong> {sol.significance}
                     </div>
                   </div>
                 </div>
