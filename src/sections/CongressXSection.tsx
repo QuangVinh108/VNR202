@@ -52,12 +52,15 @@ export const CongressXSection: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-12 items-center">
             <div className="md:col-span-5 h-64 md:h-full relative overflow-hidden">
               <img
-                src="/images/modernization.jpg"
-                alt="Diện mạo đất nước sau 20 năm đổi mới"
+                src="/images/badinh_interior.jpg"
+                alt="Khán phòng lịch sử Hội trường Ba Đình – nơi diễn ra Đại hội đại biểu toàn quốc lần thứ X"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/50 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/60 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-2.5 left-3.5 right-3.5 text-white text-[11px] bg-black/60 backdrop-blur-sm p-2 rounded-lg border border-white/10">
+                Ảnh tư liệu: Không gian Hội trường Ba Đình trong kỳ Đại hội đại biểu toàn quốc lần thứ X (tháng 4/2006)
+              </div>
             </div>
             <div className="md:col-span-7 p-6 sm:p-8 space-y-3">
               <div className="flex items-center justify-between gap-2">
@@ -141,6 +144,33 @@ export const CongressXSection: React.FC = () => {
         <p className="text-sm text-heritage-muted mb-8 max-w-3xl">
           Đại hội X đúc kết tinh hoa thực tiễn 20 năm kiến thiết đất nước thành 5 quy luật chỉ đạo xuyên suốt cho mọi giai đoạn phát triển tiếp theo.
         </p>
+
+        {/* Featured Historical Card for Lessons */}
+        <div className="mb-8 rounded-2xl overflow-hidden border border-heritage-gold/40 shadow-sm bg-white grid grid-cols-1 md:grid-cols-12 items-center">
+          <div className="md:col-span-5 relative aspect-[16/10] md:h-full overflow-hidden">
+            <img
+              src="/images/congress_hall.jpg"
+              alt="Hội trường Ba Đình – Không gian lịch sử tổ chức Đại hội Đảng toàn quốc"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/60 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute bottom-2.5 left-3.5 right-3.5 text-white text-[11px] bg-black/60 backdrop-blur-sm p-2 rounded-lg border border-white/10">
+              Ảnh tư liệu: Hội trường Ba Đình, Hà Nội – nơi kết tinh trí tuệ 20 năm đổi mới
+            </div>
+          </div>
+          <div className="md:col-span-7 p-6 sm:p-7 space-y-2.5">
+            <span className="text-xs font-bold uppercase tracking-wider text-heritage-goldDark bg-heritage-gold/15 px-2.5 py-1 rounded-full">
+              Tổng kết lý luận & Thực tiễn
+            </span>
+            <h4 className="text-lg sm:text-xl font-heading font-bold text-heritage-navy">
+              Quy Luật Phát Triển Đất Nước Trong Thời Kỳ Mới
+            </h4>
+            <p className="text-xs sm:text-sm text-heritage-muted leading-relaxed">
+              5 bài học lớn là tài sản tinh thần vô giá, bảo đảm sự kiên định về nguyên tắc độc lập dân tộc gắn liền với CNXH, phát huy tối đa sức mạnh toàn dân tộc và kết hợp nội lực với ngoại lực trong xu thế toàn cầu hóa.
+            </p>
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {congressXLessons.map((lesson) => (

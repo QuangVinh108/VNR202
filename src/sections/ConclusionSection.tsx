@@ -100,8 +100,21 @@ export const ConclusionSection: React.FC = () => {
       </div>
 
       {/* Academic Conclusion Manifesto Box */}
-      <div className="bg-heritage-ivoryLight rounded-3xl p-8 sm:p-12 border border-heritage-gold/50 shadow-heritage relative overflow-hidden">
-        <div className="max-w-3xl mx-auto text-center space-y-4">
+      <div className="bg-white rounded-3xl overflow-hidden border border-heritage-gold/50 shadow-heritage relative grid grid-cols-1 lg:grid-cols-12 items-center">
+        <div className="lg:col-span-5 relative aspect-[16/10] lg:aspect-auto lg:h-full min-h-[260px] overflow-hidden bg-slate-900">
+          <img
+            src="/images/hero_halong.jpg"
+            alt="Biển trời Tổ quốc – Di sản và khát vọng vươn ra biển lớn"
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-black/70 via-black/20 to-transparent pointer-events-none" />
+          <div className="absolute bottom-3 left-4 right-4 text-white text-xs bg-black/60 backdrop-blur-sm p-2 rounded-lg border border-white/10">
+            Hành trình đổi mới và khát vọng xây dựng non sông Việt Nam hùng cường, thịnh vượng
+          </div>
+        </div>
+
+        <div className="lg:col-span-7 p-8 sm:p-12 space-y-4">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-heritage-red/10 text-heritage-red text-xs font-bold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Thông Điệp Tổng Kết Chuyên Đề</span>
@@ -111,9 +124,15 @@ export const ConclusionSection: React.FC = () => {
             Khẳng Định Bản Lĩnh & Khát Vọng Dân Tộc
           </h3>
 
-          <p className="text-heritage-dark text-sm sm:text-base leading-relaxed text-justify sm:text-center">
+          <p className="text-heritage-dark text-sm sm:text-base leading-relaxed text-justify">
             Đại hội IX (2001) và Đại hội X (2006) của Đảng Cộng sản Việt Nam đã tạo nên những dấu mốc phát triển nhảy vọt trong tư duy lý luận và thực tiễn cách mạng. Từ việc kiên định nền kinh tế thị trường định hướng xã hội chủ nghĩa, mở rộng khối đại đoàn kết, đến quyết sách hội nhập WTO và ban hành Chiến lược Biển Việt Nam đến năm 2020 – Đảng đã định hình con đường vững chắc đưa đất nước thoát khỏi nghèo nàn, lạc hậu, tự tin vươn mình ra biển lớn và hội nhập sâu rộng vào đời sống quốc tế.
           </p>
+
+          <div className="pt-2 flex flex-wrap items-center gap-3 text-xs text-heritage-goldDark font-semibold">
+            <span>• Hiểu lịch sử</span>
+            <span>• Vững tương lai</span>
+            <span>• Phát triển Việt Nam</span>
+          </div>
         </div>
       </div>
 

@@ -50,9 +50,9 @@ export const MaritimeSection: React.FC = () => {
       caption: 'Cụm cảng nước sâu & logistics vận tải biển quốc tế'
     },
     'solution-2': {
-      src: '/images/haiphong_port.jpg',
-      alt: 'Cảng Hải Phòng ứng dụng công nghệ hiện đại',
-      caption: 'Chuyển đổi số cảng thông minh và giám sát hành trình biển'
+      src: '/images/wind.jpg',
+      alt: 'Trang trại điện gió ven biển Bạc Liêu – Năng lượng tái tạo từ biển',
+      caption: 'Trang trại điện gió Bạc Liêu – phát triển năng lượng tái tạo và ứng dụng KH-CN biển'
     },
     'solution-3': {
       src: '/images/mangrove.jpg',
@@ -65,9 +65,9 @@ export const MaritimeSection: React.FC = () => {
       caption: 'Đào tạo nguồn nhân lực biển chất lượng cao và chuyển đổi sinh kế'
     },
     'solution-5': {
-      src: '/images/map_vietnam.jpg',
-      alt: 'Bản đồ quy hoạch không gian biển Việt Nam',
-      caption: 'Hoàn thiện quy hoạch không gian biển và liên kết vùng'
+      src: '/images/modernization.jpg',
+      alt: 'Hạ tầng hiện đại và quy hoạch không gian biển đồng bộ',
+      caption: 'Hạ tầng hiện đại đồng bộ và liên kết chuỗi logistics ven biển'
     },
     'solution-6': {
       src: '/images/sovereignty.jpg',
@@ -255,6 +255,20 @@ export const MaritimeSection: React.FC = () => {
               </div>
             </div>
 
+            {/* Documentary Image for Achievements */}
+            <div className="rounded-xl overflow-hidden aspect-[16/9] relative border border-emerald-200">
+              <img
+                src="/images/haiphong_port.jpg"
+                alt="Cụm cảng biển Hải Phòng và dịch vụ logistics phía Bắc"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-2.5 left-3 right-3 text-white text-[11px] bg-black/60 backdrop-blur-sm p-1.5 rounded border border-white/10">
+                Ảnh tư liệu: Cụm cảng biển và vận tải hàng hải – động lực phát triển kinh tế biển Việt Nam
+              </div>
+            </div>
+
             <div className="space-y-4">
               {maritimeReality.achievements.map((ach, idx) => (
                 <div key={idx} className="p-4 rounded-xl bg-emerald-50/50 border border-emerald-100">
@@ -283,6 +297,20 @@ export const MaritimeSection: React.FC = () => {
                 <h4 className="text-xl font-heading font-bold text-heritage-navy">
                   Hạn Chế Cần Giải Quyết Cấp Bách
                 </h4>
+              </div>
+            </div>
+
+            {/* Documentary Image for Challenges */}
+            <div className="rounded-xl overflow-hidden aspect-[16/9] relative border border-rose-200">
+              <img
+                src="/images/mangrove.jpg"
+                alt="Rừng ngập mặn Cần Giờ – Bảo vệ môi trường sinh thái biển"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-2.5 left-3 right-3 text-white text-[11px] bg-black/60 backdrop-blur-sm p-1.5 rounded border border-white/10">
+                Ảnh tư liệu: Bảo vệ môi trường sinh thái biển và thích ứng với biến đổi khí hậu là thách thức cấp bách
               </div>
             </div>
 

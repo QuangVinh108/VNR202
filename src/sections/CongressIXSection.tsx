@@ -156,6 +156,33 @@ export const CongressIXSection: React.FC = () => {
           </div>
         </div>
 
+        {/* Featured Documentary Image Banner */}
+        <div className="mb-8 rounded-2xl overflow-hidden border border-heritage-gold/40 shadow-heritage bg-white grid grid-cols-1 md:grid-cols-12 items-center">
+          <div className="md:col-span-5 relative aspect-[16/10] md:h-full overflow-hidden">
+            <img
+              src="/images/modernization.jpg"
+              alt="Toàn cảnh đô thị hiện đại Hà Nội – Thành tựu thời kỳ đổi mới và công nghiệp hóa"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/60 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute bottom-2.5 left-3.5 right-3.5 text-white text-[11px] bg-black/60 backdrop-blur-sm p-2 rounded-lg border border-white/10">
+              Ảnh tư liệu: Sự chuyển mình của đất nước bắt đầu từ những đột phá đường lối tại Đại hội IX
+            </div>
+          </div>
+          <div className="md:col-span-7 p-6 sm:p-7 space-y-2.5">
+            <span className="text-xs font-bold uppercase tracking-wider text-heritage-red bg-heritage-red/10 px-2.5 py-1 rounded-full">
+              Tư duy lý luận đột phá
+            </span>
+            <h4 className="text-lg sm:text-xl font-heading font-bold text-heritage-navy">
+              Xác Lập Mô Hình Kinh Tế Thị Trường Định Hướng XHCN
+            </h4>
+            <p className="text-xs sm:text-sm text-heritage-muted leading-relaxed">
+              Đại hội IX đã khắc phục triệt để quan niệm coi kinh tế thị trường chỉ thuộc về chủ nghĩa tư bản, khẳng định kinh tế thị trường là phương tiện khách quan để phát triển lực lượng sản xuất phục vụ mục tiêu độc lập dân tộc và chủ nghĩa xã hội.
+            </p>
+          </div>
+        </div>
+
         <Accordion items={pillarAccordionItems} defaultOpenId="kinh-te-thi-truong-xhcn" theme="heritage" />
       </div>
 
