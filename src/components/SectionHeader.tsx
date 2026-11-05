@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface SectionHeaderProps {
-  romanNumber: string;
+  romanNumber?: string;
   badge: string;
   title: string;
   subtitle?: string;
@@ -21,18 +21,33 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
 
   return (
     <div className={`mb-12 md:mb-16 ${align === 'center' ? 'text-center' : 'text-left'}`}>
-      {/* Badge with Roman numeral */}
-      <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-4 border shadow-sm ${
+      {/* Badge with Roman numeral or category pill */}
+      <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-4 border shadow-sm ${
         isOcean 
           ? 'bg-heritage-ocean/10 text-heritage-ocean border-heritage-ocean/30' 
           : 'bg-heritage-red/10 text-heritage-red border-heritage-red/30'
       }`}>
-        <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] text-white font-bold ${
-          isOcean ? 'bg-heritage-ocean' : 'bg-heritage-red'
-        }`}>
-          {romanNumber}
-        </span>
-        <span>{badge}</span>
+        {romanNumber && (
+          romanNumber.length <= 3 ? (
+            <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] text-white font-bold shrink-0 ${
+              isOcean ? 'bg-heritage-ocean' : 'bg-heritage-red'
+            }`}>
+              {romanNumber}
+            </span>
+          ) : (
+            <span className={`px-2.5 py-0.5 rounded-full text-[10px] text-white font-bold tracking-wider shrink-0 whitespace-nowrap ${
+              isOcean ? 'bg-heritage-ocean' : 'bg-heritage-red'
+            }`}>
+              {romanNumber}
+            </span>
+          )
+        )}
+        {!romanNumber && (
+          <span className={`w-2 h-2 rounded-full shrink-0 animate-pulse ${
+            isOcean ? 'bg-heritage-ocean' : 'bg-heritage-red'
+          }`} />
+        )}
+        <span className="whitespace-nowrap font-bold">{badge}</span>
       </div>
 
       {/* Main Title */}

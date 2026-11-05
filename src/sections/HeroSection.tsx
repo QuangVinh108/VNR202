@@ -1,7 +1,11 @@
 import React from 'react';
-import { ArrowRight, BookOpen, Compass, Award, Calendar, ChevronDown } from 'lucide-react';
+import { ArrowRight, BookOpen, Compass, Calendar, ChevronDown, Gamepad2 } from 'lucide-react';
 
-export const HeroSection: React.FC = () => {
+interface HeroSectionProps {
+  onOpenGame?: () => void;
+}
+
+export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenGame }) => {
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -95,11 +99,11 @@ export const HeroSection: React.FC = () => {
             </button>
 
             <button
-              onClick={() => scrollTo('quiz-review')}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-white hover:bg-heritage-ivoryLight text-heritage-goldDark font-semibold text-sm transition-all duration-300 border border-heritage-gold/40 shadow-sm"
+              onClick={onOpenGame}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-heritage-ivoryLight text-heritage-red font-bold text-sm transition-all duration-300 border-2 border-heritage-gold/50 shadow-sm hover:border-heritage-red hover:-translate-y-0.5 group"
             >
-              <Award className="w-4 h-4 text-heritage-goldDark" />
-              <span>Làm bài trắc nghiệm</span>
+              <Gamepad2 className="w-4 h-4 text-heritage-red group-hover:scale-110 transition-transform" />
+              <span>Trò chơi ôn tập</span>
             </button>
           </div>
 

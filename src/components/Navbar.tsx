@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Award } from 'lucide-react';
+import { Menu, X, Gamepad2 } from 'lucide-react';
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+  onNavigateToGame?: () => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ onNavigateToGame }) => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState('hero');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -20,7 +24,7 @@ export const Navbar: React.FC = () => {
       setIsScrolled(window.scrollY > 40);
 
       // Scroll Spy for active section
-      const sections = ['hero', 'overview', 'congress-ix', 'congress-x', 'maritime', 'conclusion', 'quiz-review'];
+      const sections = ['hero', 'overview', 'congress-ix', 'congress-x', 'maritime', 'conclusion'];
       const scrollPosition = window.scrollY + 200;
 
       for (const sectionId of sections) {
@@ -46,12 +50,21 @@ export const Navbar: React.FC = () => {
     { id: 'congress-x', label: 'Đại hội X (2006)' },
     { id: 'maritime', label: 'Kinh tế Biển', badge: 'Chiến lược' },
     { id: 'conclusion', label: 'Kết luận' },
-    { id: 'quiz-review', label: 'Ôn tập', isQuiz: true },
+    { id: 'game', label: 'Trò chơi', isGame: true },
   ];
 
-  const scrollTo = (id: string) => {
+  const handleNavClick = (linkId: string, isGame?: boolean) => {
     setIsMobileMenuOpen(false);
-    const element = document.getElementById(id);
+    if (isGame || linkId === 'game') {
+      if (onNavigateToGame) {
+        onNavigateToGame();
+      } else {
+        window.location.hash = '#tro-choi';
+      }
+      return;
+    }
+
+    const element = document.getElementById(linkId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -79,7 +92,7 @@ export const Navbar: React.FC = () => {
           
           {/* Logo & Subject Emblem */}
           <button
-            onClick={() => scrollTo('hero')}
+            onClick={() => handleNavClick('hero')}
             className="flex items-center gap-3 text-left group focus:outline-none"
           >
             <div className="w-9 h-9 rounded-xl bg-heritage-red flex items-center justify-center text-white shadow-sm border border-heritage-gold/40 group-hover:scale-105 transition-transform">
@@ -103,19 +116,23 @@ export const Navbar: React.FC = () => {
               return (
                 <button
                   key={link.id}
-                  onClick={() => scrollTo(link.id)}
+                  onClick={() => handleNavClick(link.id, link.isGame)}
                   className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all relative flex items-center gap-1.5 ${
                     isActive
                       ? 'text-heritage-red bg-heritage-red/10'
                       : 'text-heritage-navy/80 hover:text-heritage-red hover:bg-heritage-gold/10'
                   }`}
                 >
-                  {link.isQuiz ? (
-                    <Award className="w-3.5 h-3.5 text-heritage-goldDark" />
+                  {link.isGame ? (
+                    <Gamepad2 className="w-3.5 h-3.5 text-heritage-red" />
                   ) : null}
                   <span>{link.label}</span>
                   {link.badge && (
-                    <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.2 rounded bg-heritage-ocean/15 text-heritage-ocean">
+                    <span className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.2 rounded ${
+                      link.isGame
+                        ? 'bg-heritage-red/15 text-heritage-red'
+                        : 'bg-heritage-ocean/15 text-heritage-ocean'
+                    }`}>
                       {link.badge}
                     </span>
                   )}
@@ -149,7 +166,7 @@ export const Navbar: React.FC = () => {
               return (
                 <button
                   key={link.id}
-                  onClick={() => scrollTo(link.id)}
+                  onClick={() => handleNavClick(link.id, link.isGame)}
                   className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-semibold flex items-center justify-between transition-colors ${
                     isActive
                       ? 'bg-heritage-red text-white'
@@ -157,12 +174,16 @@ export const Navbar: React.FC = () => {
                   }`}
                 >
                   <span className="flex items-center gap-2">
-                    {link.isQuiz && <Award className="w-4 h-4" />}
+                    {link.isGame && <Gamepad2 className="w-4 h-4 text-heritage-red" />}
                     {link.label}
                   </span>
                   {link.badge && (
                     <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${
-                      isActive ? 'bg-white/20 text-white' : 'bg-heritage-ocean/10 text-heritage-ocean'
+                      isActive
+                        ? 'bg-white/20 text-white'
+                        : link.isGame
+                        ? 'bg-heritage-red/10 text-heritage-red'
+                        : 'bg-heritage-ocean/10 text-heritage-ocean'
                     }`}>
                       {link.badge}
                     </span>

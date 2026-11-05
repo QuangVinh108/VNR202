@@ -1,6 +1,11 @@
 import React from 'react';
+import { Gamepad2 } from 'lucide-react';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenGame?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenGame }) => {
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -79,10 +84,12 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <button
-                  onClick={() => scrollTo('quiz-review')}
-                  className="hover:text-heritage-gold transition-colors text-left"
+                  onClick={onOpenGame}
+                  className="hover:text-heritage-gold transition-colors text-left flex items-center gap-1.5 group"
                 >
-                  Trắc nghiệm ôn tập kiến thức
+                  <Gamepad2 className="w-3.5 h-3.5 text-heritage-gold group-hover:scale-110 transition-transform" />
+                  <span>Trò chơi ôn tập</span>
+                  <span className="text-[10px] bg-heritage-red px-1.5 py-0.2 rounded text-white font-bold">Mới</span>
                 </button>
               </li>
             </ul>
