@@ -1,5 +1,4 @@
 import React from 'react';
-import { Gamepad2 } from 'lucide-react';
 
 interface FooterProps {
   onOpenGame?: () => void;
@@ -85,11 +84,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenGame }) => {
               <li>
                 <button
                   onClick={onOpenGame}
-                  className="hover:text-heritage-gold transition-colors text-left flex items-center gap-1.5 group"
+                  className="hover:text-heritage-gold transition-colors text-left"
                 >
-                  <Gamepad2 className="w-3.5 h-3.5 text-heritage-gold group-hover:scale-110 transition-transform" />
-                  <span>Trò chơi ôn tập</span>
-                  <span className="text-[10px] bg-heritage-red px-1.5 py-0.2 rounded text-white font-bold">Mới</span>
+                  Trò chơi ôn tập
                 </button>
               </li>
             </ul>
