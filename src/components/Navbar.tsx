@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Gamepad2 } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   onNavigateToGame?: () => void;
@@ -123,9 +123,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigateToGame }) => {
                       : 'text-heritage-navy/80 hover:text-heritage-red hover:bg-heritage-gold/10'
                   }`}
                 >
-                  {link.isGame ? (
-                    <Gamepad2 className="w-3.5 h-3.5 text-heritage-red" />
-                  ) : null}
                   <span>{link.label}</span>
                   {link.badge && (
                     <span className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.2 rounded ${
@@ -173,10 +170,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigateToGame }) => {
                       : 'text-heritage-navy hover:bg-heritage-ivory'
                   }`}
                 >
-                  <span className="flex items-center gap-2">
-                    {link.isGame && <Gamepad2 className="w-4 h-4 text-heritage-red" />}
-                    {link.label}
-                  </span>
+                  <span>{link.label}</span>
                   {link.badge && (
                     <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${
                       isActive

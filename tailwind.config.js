@@ -36,6 +36,41 @@ export default {
         'ocean': '0 4px 20px -2px rgba(40, 108, 131, 0.12), 0 2px 6px -1px rgba(0, 0, 0, 0.04)',
         'ocean-hover': '0 12px 30px -4px rgba(40, 108, 131, 0.2), 0 4px 10px -2px rgba(0, 0, 0, 0.06)',
         'parchment': '0 2px 10px rgba(198, 161, 91, 0.15)',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-6px)' },
+        },
+        'float-reverse': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(6px)' },
+        },
+        'spin-slow': {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
+        'pulse-glow': {
+          '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+          '50%': { opacity: '0.75', transform: 'scale(1.05)' },
+        },
+        radar: {
+          '0%': { transform: 'scale(0.8)', opacity: '0.9' },
+          '100%': { transform: 'scale(2.4)', opacity: '0' },
+        }
+      },
+      animation: {
+        'float': 'float 4s ease-in-out infinite',
+        'float-slow': 'float 6s ease-in-out infinite',
+        'float-reverse': 'float-reverse 5s ease-in-out infinite',
+        'spin-slow': 'spin-slow 25s linear infinite',
+        'shimmer': 'shimmer 2.5s infinite linear',
+        'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+        'radar': 'radar 2.5s cubic-bezier(0, 0.2, 0.8, 1) infinite',
       }
     },
   },

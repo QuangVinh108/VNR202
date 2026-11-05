@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { SectionHeader } from '../components/SectionHeader';
 import { MaritimeMapExplorer } from '../components/MaritimeMapExplorer';
 import { HistoricalQuote } from '../components/HistoricalQuote';
@@ -150,10 +151,15 @@ export const MaritimeSection: React.FC = () => {
 
         {/* 6 Lợi thế lớn cards with Images */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {maritimePotentials.map((item) => (
-            <div
+          {maritimePotentials.map((item, idx) => (
+            <motion.div
               key={item.id}
-              className="bg-white rounded-2xl border border-heritage-ocean/20 shadow-ocean hover:shadow-ocean-hover hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col justify-between group"
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.08 }}
+              whileHover={{ y: -6 }}
+              className="bg-white rounded-2xl border border-heritage-ocean/20 shadow-ocean hover:shadow-ocean-hover transition-all duration-300 overflow-hidden flex flex-col justify-between group"
             >
               {item.image && (
                 <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
@@ -184,7 +190,7 @@ export const MaritimeSection: React.FC = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -349,8 +355,13 @@ export const MaritimeSection: React.FC = () => {
             const imgData = solutionImages[sol.id];
 
             return (
-              <div
+              <motion.div
                 key={sol.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: (index % 2) * 0.12 }}
+                whileHover={{ y: -6 }}
                 className="bg-white rounded-2xl border border-heritage-ocean/30 shadow-ocean hover:shadow-ocean-hover transition-all duration-300 flex flex-col justify-between overflow-hidden group"
               >
                 {/* Solution Visual Image Header */}
@@ -359,7 +370,7 @@ export const MaritimeSection: React.FC = () => {
                     <img
                       src={imgData.src}
                       alt={imgData.alt}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -376,7 +387,7 @@ export const MaritimeSection: React.FC = () => {
                   <div>
                     {/* Header with icon */}
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 rounded-xl bg-heritage-oceanMist flex items-center justify-center shrink-0">
+                      <div className="w-10 h-10 rounded-xl bg-heritage-oceanMist flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                         {getIcon(sol.iconName)}
                       </div>
                       <h4 className="text-lg sm:text-xl font-heading font-bold text-heritage-navy leading-snug">
@@ -405,7 +416,7 @@ export const MaritimeSection: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -456,13 +467,18 @@ export const MaritimeSection: React.FC = () => {
           {/* 6 Responsibilities Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
             {studentResponsibilities.map((resp, i) => (
-              <div
+              <motion.div
                 key={resp.id}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                whileHover={{ y: -6, scale: 1.02 }}
                 className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/15 hover:border-heritage-gold hover:bg-white/15 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="w-8 h-8 rounded-full bg-heritage-gold text-heritage-navy font-bold text-xs flex items-center justify-center">
+                    <span className="w-8 h-8 rounded-full bg-heritage-gold text-heritage-navy font-bold text-xs flex items-center justify-center shadow-md">
                       {i + 1}
                     </span>
                     <span className="text-[10px] font-bold uppercase tracking-wider text-heritage-goldLight">
@@ -478,7 +494,7 @@ export const MaritimeSection: React.FC = () => {
                     {resp.content}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 

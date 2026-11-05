@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { SectionHeader } from '../components/SectionHeader';
 import { ArrowRight, BookOpen, Landmark, Ship, Layers } from 'lucide-react';
 
@@ -77,13 +78,18 @@ export const OverviewSection: React.FC = () => {
       />
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {topics.map((topic) => {
+        {topics.map((topic, cardIdx) => {
           const Icon = topic.icon;
           const isOcean = topic.color === 'ocean';
 
           return (
-            <div
+            <motion.div
               key={topic.id}
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: cardIdx * 0.15 }}
+              whileHover={{ y: -8, transition: { duration: 0.25 } }}
               className={`rounded-2xl flex flex-col justify-between border transition-all duration-300 relative group overflow-hidden ${
                 isOcean
                   ? 'bg-white border-heritage-ocean/30 shadow-ocean hover:shadow-ocean-hover hover:border-heritage-ocean'
@@ -170,12 +176,12 @@ export const OverviewSection: React.FC = () => {
                     }`}
                   >
                     <span>Khám phá chủ đề {topic.themeNumber}</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
                   </button>
                 </div>
               </div>
 
-            </div>
+            </motion.div>
           );
         })}
       </div>

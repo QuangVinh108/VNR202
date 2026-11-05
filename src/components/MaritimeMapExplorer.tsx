@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { coastalLocations } from '../data/maritimeEconomy';
 import { CoastalLocation } from '../types';
 import { MapPin, Navigation, Anchor, Compass, Info } from 'lucide-react';
@@ -149,9 +150,9 @@ export const MaritimeMapExplorer: React.FC = () => {
                   onClick={() => setSelectedLocation(loc)}
                 >
                   {isIsland ? (
-                    /* Sovereign Archipelago Unified Badge */
+                    /* Sovereign Archipelago Unified Badge with floating sea animation */
                     <div
-                      className={`group/island relative flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl border transition-all duration-300 shadow-lg select-none whitespace-nowrap ${
+                      className={`group/island relative flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl border transition-all duration-300 shadow-lg select-none whitespace-nowrap animate-float-slow ${
                         isSelected
                           ? 'bg-heritage-gold text-heritage-navy border-white ring-4 ring-heritage-gold/40 scale-105 shadow-2xl font-bold'
                           : 'bg-[#103544]/95 hover:bg-[#164356] text-white border-heritage-gold/60 hover:border-heritage-gold hover:scale-105'
@@ -161,7 +162,7 @@ export const MaritimeMapExplorer: React.FC = () => {
                       <div
                         className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center shrink-0 shadow-sm ${
                           isSelected
-                            ? 'bg-heritage-red text-white ring-2 ring-heritage-navy'
+                            ? 'bg-heritage-red text-white ring-2 ring-heritage-navy animate-pulse'
                             : 'bg-heritage-red text-white group-hover/island:scale-110 transition-transform'
                         }`}
                       >
@@ -186,17 +187,23 @@ export const MaritimeMapExplorer: React.FC = () => {
                         </div>
                       </div>
 
-                      {/* Pulse ring when selected */}
+                      {/* Radar pulse wave when selected */}
                       {isSelected && (
-                        <span className="absolute -inset-1 rounded-xl bg-heritage-gold animate-ping opacity-35 pointer-events-none" />
+                        <>
+                          <span className="absolute -inset-1 rounded-xl bg-heritage-gold animate-ping opacity-35 pointer-events-none" />
+                          <span className="absolute -inset-3 rounded-xl border border-heritage-gold animate-radar pointer-events-none" />
+                        </>
                       )}
                     </div>
                   ) : (
                     /* Standard Coastal City / Port Marker */
                     <>
-                      {/* Pulse ring when selected */}
+                      {/* Radar pulse waves when selected */}
                       {isSelected && (
-                        <span className="absolute -inset-2 rounded-full bg-heritage-gold animate-ping opacity-60 pointer-events-none" />
+                        <>
+                          <span className="absolute -inset-2 rounded-full bg-heritage-gold animate-ping opacity-50 pointer-events-none" />
+                          <span className="absolute -inset-4 rounded-full border border-heritage-gold animate-radar pointer-events-none" />
+                        </>
                       )}
 
                       {/* Marker Pin Icon */}
@@ -204,14 +211,14 @@ export const MaritimeMapExplorer: React.FC = () => {
                         className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center transition-all duration-300 shadow-md ${
                           isSelected
                             ? 'bg-heritage-gold text-heritage-navy scale-125 ring-2 ring-white font-bold'
-                            : 'bg-heritage-oceanLight text-white hover:bg-heritage-gold hover:text-heritage-navy hover:scale-110'
+                            : 'bg-heritage-oceanLight text-white hover:bg-heritage-gold hover:text-heritage-navy hover:scale-115'
                         }`}
                       >
                         <MapPin className="w-3.5 h-3.5" />
                       </div>
 
                       {/* Tooltip on hover */}
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover/pin:block whitespace-nowrap bg-heritage-navy/95 text-white text-[11px] px-2.5 py-1 rounded shadow-lg border border-white/20 pointer-events-none z-30">
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover/pin:block whitespace-nowrap bg-heritage-navy/95 text-white text-[11px] px-2.5 py-1 rounded shadow-lg border border-white/20 pointer-events-none z-30 animate-fade-in">
                         {loc.name}
                       </div>
                     </>
@@ -228,50 +235,59 @@ export const MaritimeMapExplorer: React.FC = () => {
           </div>
         </div>
 
-        {/* Selected Location Information Card */}
-        <div className="lg:col-span-5 bg-white text-heritage-dark rounded-2xl p-6 sm:p-7 shadow-xl border border-heritage-gold/40 flex flex-col justify-between">
-          <div>
-            {/* Top region & type badges */}
-            <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-              <span className="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-heritage-ocean/10 text-heritage-ocean">
-                {selectedLocation.region}
-              </span>
-              <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-heritage-gold/20 text-heritage-goldDark">
-                {selectedLocation.type}
-              </span>
-            </div>
-
-            {/* Location Name */}
-            <h4 className="text-2xl font-heading font-bold text-heritage-navy mb-3 flex items-center gap-2">
-              <Navigation className="w-5 h-5 text-heritage-ocean shrink-0" />
-              <span>{selectedLocation.name}</span>
-            </h4>
-
-            {/* Description */}
-            <p className="text-sm text-heritage-muted leading-relaxed mb-5">
-              {selectedLocation.description}
-            </p>
-
-            {/* Strategic Importance */}
-            <div className="p-4 rounded-xl bg-heritage-oceanMist/50 border border-heritage-ocean/20 text-heritage-navy mb-5">
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-heritage-ocean mb-1.5">
-                <Info className="w-4 h-4" />
-                <span>Ý nghĩa chiến lược phát triển & an ninh:</span>
+        {/* Selected Location Information Card with Animated Switch */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={selectedLocation.id}
+            initial={{ opacity: 0, x: 20, scale: 0.98 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: -20, scale: 0.98 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            className="lg:col-span-5 bg-white text-heritage-dark rounded-2xl p-6 sm:p-7 shadow-xl border border-heritage-gold/40 flex flex-col justify-between"
+          >
+            <div>
+              {/* Top region & type badges */}
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <span className="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-heritage-ocean/10 text-heritage-ocean">
+                  {selectedLocation.region}
+                </span>
+                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-heritage-gold/20 text-heritage-goldDark">
+                  {selectedLocation.type}
+                </span>
               </div>
-              <p className="text-xs sm:text-sm leading-relaxed font-medium">
-                {selectedLocation.strategicImportance}
-              </p>
-            </div>
-          </div>
 
-          {/* Quick Stats or actions */}
-          <div className="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-heritage-muted">
-            <span>Toạ độ không gian kinh tế biển</span>
-            <span className="font-semibold text-heritage-ocean">
-              Việt Nam vững vàng tiến ra biển lớn
-            </span>
-          </div>
-        </div>
+              {/* Location Name */}
+              <h4 className="text-2xl font-heading font-bold text-heritage-navy mb-3 flex items-center gap-2">
+                <Navigation className="w-5 h-5 text-heritage-ocean shrink-0 animate-pulse" />
+                <span>{selectedLocation.name}</span>
+              </h4>
+
+              {/* Description */}
+              <p className="text-sm text-heritage-muted leading-relaxed mb-5">
+                {selectedLocation.description}
+              </p>
+
+              {/* Strategic Importance */}
+              <div className="p-4 rounded-xl bg-heritage-oceanMist/50 border border-heritage-ocean/20 text-heritage-navy mb-5">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-heritage-ocean mb-1.5">
+                  <Info className="w-4 h-4" />
+                  <span>Ý nghĩa chiến lược phát triển & an ninh:</span>
+                </div>
+                <p className="text-xs sm:text-sm leading-relaxed font-medium">
+                  {selectedLocation.strategicImportance}
+                </p>
+              </div>
+            </div>
+
+            {/* Quick Stats or actions */}
+            <div className="pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-heritage-muted">
+              <span>Toạ độ không gian kinh tế biển</span>
+              <span className="font-semibold text-heritage-ocean">
+                Việt Nam vững vàng tiến ra biển lớn
+              </span>
+            </div>
+          </motion.div>
+        </AnimatePresence>
 
       </div>
     </div>

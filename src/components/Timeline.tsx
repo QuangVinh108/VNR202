@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { TimelineItem } from '../types';
 import { DetailModal } from './DetailModal';
 import { Calendar, Bookmark } from 'lucide-react';
@@ -21,8 +22,12 @@ export const Timeline: React.FC<TimelineProps> = ({ items, theme = 'heritage' })
           const isEven = index % 2 === 0;
 
           return (
-            <div
+            <motion.div
               key={item.id}
+              initial={{ opacity: 0, x: isEven ? 40 : -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
               className={`relative flex flex-col md:flex-row items-start ${
                 isEven ? 'md:flex-row-reverse' : ''
               } group`}
@@ -31,8 +36,8 @@ export const Timeline: React.FC<TimelineProps> = ({ items, theme = 'heritage' })
               <div
                 className={`absolute -left-[25px] md:left-1/2 md:-translate-x-1/2 top-4 w-7 h-7 rounded-full border-4 transition-all duration-300 flex items-center justify-center ${
                   isOcean
-                    ? 'bg-white border-heritage-ocean group-hover:scale-110 group-hover:bg-heritage-ocean group-hover:text-white'
-                    : 'bg-white border-heritage-red group-hover:scale-110 group-hover:bg-heritage-red group-hover:text-white'
+                    ? 'bg-white border-heritage-ocean group-hover:scale-125 group-hover:bg-heritage-ocean group-hover:text-white shadow-md'
+                    : 'bg-white border-heritage-red group-hover:scale-125 group-hover:bg-heritage-red group-hover:text-white shadow-md'
                 }`}
               >
                 <div className={`w-2 h-2 rounded-full ${isOcean ? 'bg-heritage-ocean' : 'bg-heritage-red'}`} />
@@ -44,9 +49,11 @@ export const Timeline: React.FC<TimelineProps> = ({ items, theme = 'heritage' })
                   isEven ? 'md:pl-0 md:pr-0 md:text-left' : 'md:pl-0 md:text-left'
                 }`}
               >
-                <div
+                <motion.div
+                  whileHover={{ y: -5, scale: 1.015 }}
+                  transition={{ duration: 0.2 }}
                   onClick={() => setSelectedItem(item)}
-                  className={`cursor-pointer rounded-2xl p-6 border transition-all duration-300 paper-card relative group-hover:-translate-y-1 ${
+                  className={`cursor-pointer rounded-2xl p-6 border transition-all duration-300 paper-card relative ${
                     isOcean
                       ? 'border-heritage-ocean/20 hover:border-heritage-ocean shadow-ocean hover:shadow-ocean-hover'
                       : 'border-heritage-gold/30 hover:border-heritage-red shadow-heritage hover:shadow-heritage-hover'
@@ -92,9 +99,9 @@ export const Timeline: React.FC<TimelineProps> = ({ items, theme = 'heritage' })
                       ))}
                     </div>
                   )}
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>

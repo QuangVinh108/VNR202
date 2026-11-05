@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { SectionHeader } from '../components/SectionHeader';
 import { Timeline } from '../components/Timeline';
 import { HistoricalQuote } from '../components/HistoricalQuote';
@@ -85,7 +86,14 @@ export const CongressXSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
           {/* Quốc tế */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-heritage-gold/30 shadow-heritage flex flex-col justify-between">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            whileHover={{ y: -6 }}
+            className="bg-white rounded-2xl p-6 sm:p-8 border border-heritage-gold/30 shadow-heritage flex flex-col justify-between transition-all duration-300"
+          >
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl bg-heritage-ocean/10 text-heritage-ocean flex items-center justify-center shrink-0">
@@ -105,10 +113,17 @@ export const CongressXSection: React.FC = () => {
                 ))}
               </ul>
             </div>
-          </div>
+          </motion.div>
 
           {/* Trong nước */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-heritage-gold/30 shadow-heritage flex flex-col justify-between">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            whileHover={{ y: -6 }}
+            className="bg-white rounded-2xl p-6 sm:p-8 border border-heritage-gold/30 shadow-heritage flex flex-col justify-between transition-all duration-300"
+          >
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl bg-heritage-red/10 text-heritage-red flex items-center justify-center shrink-0">
@@ -128,7 +143,7 @@ export const CongressXSection: React.FC = () => {
                 ))}
               </ul>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>
@@ -174,9 +189,14 @@ export const CongressXSection: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {congressXLessons.map((lesson) => (
-            <div
+            <motion.div
               key={lesson.number}
-              className={`rounded-2xl p-6 border bg-white shadow-heritage hover:shadow-heritage-hover hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between ${
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: (lesson.number - 1) * 0.1 }}
+              whileHover={{ y: -6 }}
+              className={`rounded-2xl p-6 border bg-white shadow-heritage hover:shadow-heritage-hover transition-all duration-300 flex flex-col justify-between ${
                 lesson.number === 5 ? 'md:col-span-2 lg:col-span-1' : ''
               }`}
             >
@@ -202,7 +222,7 @@ export const CongressXSection: React.FC = () => {
                   {lesson.content}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { quizQuestions } from '../data/quizData';
 import {
   Gamepad2,
@@ -387,127 +388,145 @@ export const GamePage: React.FC<GamePageProps> = ({ onBackToHome }) => {
               />
             </div>
 
-            {/* Main Question Card */}
-            <div className="bg-white rounded-3xl shadow-heritage border border-heritage-gold/40 p-6 sm:p-9 space-y-6 relative overflow-hidden">
-              <div className="space-y-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-heritage-red">
-                  Chủ đề: {currentQuestion.source.split(':')[0]}
-                </span>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-heading font-bold text-heritage-navy leading-snug">
-                  {currentQuestion.question}
-                </h3>
-              </div>
+            {/* Main Question Card with Smooth Transition */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIdx}
+                initial={{ opacity: 0, x: 25 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -25 }}
+                transition={{ duration: 0.28, ease: 'easeOut' }}
+                className="bg-white rounded-3xl shadow-heritage border border-heritage-gold/40 p-6 sm:p-9 space-y-6 relative overflow-hidden"
+              >
+                <div className="space-y-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-heritage-red">
+                    Chủ đề: {currentQuestion.source.split(':')[0]}
+                  </span>
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-heading font-bold text-heritage-navy leading-snug">
+                    {currentQuestion.question}
+                  </h3>
+                </div>
 
-              {/* 4 Options Grid */}
-              <div className="grid grid-cols-1 gap-3.5">
-                {currentQuestion.options.map((option, idx) => {
-                  const isSelected = selectedOption === idx;
-                  const isCorrect = idx === currentQuestion.correctIndex;
-                  const optionLabel = String.fromCharCode(65 + idx); // A, B, C, D
+                {/* 4 Options Grid */}
+                <div className="grid grid-cols-1 gap-3.5">
+                  {currentQuestion.options.map((option, idx) => {
+                    const isSelected = selectedOption === idx;
+                    const isCorrect = idx === currentQuestion.correctIndex;
+                    const optionLabel = String.fromCharCode(65 + idx); // A, B, C, D
 
-                  let buttonStyle = 'bg-white hover:bg-heritage-ivory border-heritage-gold/40 text-heritage-dark hover:border-heritage-red';
+                    let buttonStyle = 'bg-white hover:bg-heritage-ivory border-heritage-gold/40 text-heritage-dark hover:border-heritage-red';
 
-                  if (isAnswered) {
-                    if (isCorrect) {
-                      buttonStyle = 'bg-emerald-50 border-emerald-500 text-emerald-950 font-bold shadow-md ring-2 ring-emerald-500/30';
-                    } else if (isSelected) {
-                      buttonStyle = 'bg-rose-50 border-rose-500 text-rose-950 font-medium shadow-md';
-                    } else {
-                      buttonStyle = 'bg-stone-50/50 border-stone-200 text-stone-400 opacity-60';
+                    if (isAnswered) {
+                      if (isCorrect) {
+                        buttonStyle = 'bg-emerald-50 border-emerald-500 text-emerald-950 font-bold shadow-md ring-2 ring-emerald-500/30';
+                      } else if (isSelected) {
+                        buttonStyle = 'bg-rose-50 border-rose-500 text-rose-950 font-medium shadow-md';
+                      } else {
+                        buttonStyle = 'bg-stone-50/50 border-stone-200 text-stone-400 opacity-60';
+                      }
                     }
-                  }
 
-                  return (
-                    <button
-                      key={idx}
-                      onClick={() => handleSelectOption(idx)}
-                      disabled={isAnswered}
-                      className={`w-full text-left p-4 sm:p-5 rounded-2xl border-2 transition-all duration-200 flex items-center justify-between gap-4 group ${buttonStyle}`}
-                    >
-                      <div className="flex items-center gap-3.5 sm:gap-4 flex-1">
-                        <span
-                          className={`w-8 h-8 rounded-xl font-heading font-black text-xs flex items-center justify-center shrink-0 transition-colors ${
-                            isAnswered && isCorrect
-                              ? 'bg-emerald-600 text-white'
-                              : isAnswered && isSelected
-                              ? 'bg-rose-600 text-white'
-                              : 'bg-heritage-ivory border border-heritage-gold/40 text-heritage-navy group-hover:bg-heritage-red group-hover:text-white'
-                          }`}
-                        >
-                          {optionLabel}
-                        </span>
-                        <span className="text-sm sm:text-base leading-relaxed">
-                          {option}
-                        </span>
+                    return (
+                      <motion.button
+                        key={idx}
+                        whileHover={!isAnswered ? { scale: 1.015, x: 3 } : {}}
+                        whileTap={!isAnswered ? { scale: 0.985 } : {}}
+                        onClick={() => handleSelectOption(idx)}
+                        disabled={isAnswered}
+                        className={`w-full text-left p-4 sm:p-5 rounded-2xl border-2 transition-all duration-200 flex items-center justify-between gap-4 group ${buttonStyle}`}
+                      >
+                        <div className="flex items-center gap-3.5 sm:gap-4 flex-1">
+                          <span
+                            className={`w-8 h-8 rounded-xl font-heading font-black text-xs flex items-center justify-center shrink-0 transition-colors ${
+                              isAnswered && isCorrect
+                                ? 'bg-emerald-600 text-white'
+                                : isAnswered && isSelected
+                                ? 'bg-rose-600 text-white'
+                                : 'bg-heritage-ivory border border-heritage-gold/40 text-heritage-navy group-hover:bg-heritage-red group-hover:text-white'
+                            }`}
+                          >
+                            {optionLabel}
+                          </span>
+                          <span className="text-sm sm:text-base leading-relaxed">
+                            {option}
+                          </span>
+                        </div>
+
+                        {/* Status Icon */}
+                        {isAnswered && (
+                          <div className="shrink-0">
+                            {isCorrect && (
+                              <CheckCircle2 className="w-6 h-6 text-emerald-600 fill-emerald-100 animate-bounce" />
+                            )}
+                            {!isCorrect && isSelected && (
+                              <XCircle className="w-6 h-6 text-rose-600 fill-rose-100" />
+                            )}
+                          </div>
+                        )}
+                      </motion.button>
+                    );
+                  })}
+                </div>
+
+                {/* Immediate Feedback & Historical Explanation */}
+                {isAnswered && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="pt-4 border-t border-heritage-gold/20 space-y-4"
+                  >
+                    <div className={`p-4 sm:p-5 rounded-2xl border ${
+                      selectedOption === currentQuestion.correctIndex
+                        ? 'bg-emerald-50/80 border-emerald-300'
+                        : 'bg-amber-50/80 border-amber-300'
+                    }`}>
+                      <div className="flex items-center gap-2 mb-2">
+                        {selectedOption === currentQuestion.correctIndex ? (
+                          <>
+                            <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                            <span className="font-heading font-bold text-emerald-800 text-sm sm:text-base">
+                              Chính xác! (+100 điểm)
+                            </span>
+                          </>
+                        ) : (
+                          <>
+                            <XCircle className="w-5 h-5 text-rose-600" />
+                            <span className="font-heading font-bold text-rose-800 text-sm sm:text-base">
+                              Chưa chính xác!
+                            </span>
+                          </>
+                        )}
                       </div>
 
-                      {/* Status Icon */}
-                      {isAnswered && (
-                        <div className="shrink-0">
-                          {isCorrect && (
-                            <CheckCircle2 className="w-6 h-6 text-emerald-600 fill-emerald-100 animate-bounce" />
-                          )}
-                          {!isCorrect && isSelected && (
-                            <XCircle className="w-6 h-6 text-rose-600 fill-rose-100" />
-                          )}
-                        </div>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
+                      <p className="text-xs sm:text-sm text-heritage-dark leading-relaxed">
+                        <b>Giải thích lịch sử:</b> {currentQuestion.explanation}
+                      </p>
 
-              {/* Immediate Feedback & Historical Explanation */}
-              {isAnswered && (
-                <div className="pt-4 border-t border-heritage-gold/20 space-y-4 animate-fade-in">
-                  <div className={`p-4 sm:p-5 rounded-2xl border ${
-                    selectedOption === currentQuestion.correctIndex
-                      ? 'bg-emerald-50/80 border-emerald-300'
-                      : 'bg-amber-50/80 border-amber-300'
-                  }`}>
-                    <div className="flex items-center gap-2 mb-2">
-                      {selectedOption === currentQuestion.correctIndex ? (
-                        <>
-                          <CheckCircle2 className="w-5 h-5 text-emerald-600" />
-                          <span className="font-heading font-bold text-emerald-800 text-sm sm:text-base">
-                            Chính xác! (+100 điểm)
-                          </span>
-                        </>
-                      ) : (
-                        <>
-                          <XCircle className="w-5 h-5 text-rose-600" />
-                          <span className="font-heading font-bold text-rose-800 text-sm sm:text-base">
-                            Chưa chính xác!
-                          </span>
-                        </>
-                      )}
+                      <div className="mt-2.5 pt-2 border-t border-black/5 flex items-center gap-1.5 text-[11px] font-semibold text-heritage-muted">
+                        <BookOpen className="w-3.5 h-3.5 text-heritage-goldDark" />
+                        <span>{currentQuestion.source}</span>
+                      </div>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-heritage-dark leading-relaxed">
-                      <b>Giải thích lịch sử:</b> {currentQuestion.explanation}
-                    </p>
-
-                    <div className="mt-2.5 pt-2 border-t border-black/5 flex items-center gap-1.5 text-[11px] font-semibold text-heritage-muted">
-                      <BookOpen className="w-3.5 h-3.5 text-heritage-goldDark" />
-                      <span>{currentQuestion.source}</span>
+                    {/* Next Question / Finish Button */}
+                    <div className="flex justify-end pt-2">
+                      <motion.button
+                        whileHover={{ scale: 1.03, y: -2 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={handleNextQuestion}
+                        className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-heritage-red hover:bg-heritage-deepRed text-white font-bold text-sm sm:text-base transition-colors shadow-md hover:shadow-lg"
+                      >
+                        <span>
+                          {currentIdx < quizQuestions.length - 1 ? 'Câu tiếp theo' : 'Xem kết quả chung cuộc'}
+                        </span>
+                        <ArrowRight className="w-4 h-4" />
+                      </motion.button>
                     </div>
-                  </div>
-
-                  {/* Next Question / Finish Button */}
-                  <div className="flex justify-end pt-2">
-                    <button
-                      onClick={handleNextQuestion}
-                      className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-heritage-red hover:bg-heritage-deepRed text-white font-bold text-sm sm:text-base transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
-                    >
-                      <span>
-                        {currentIdx < quizQuestions.length - 1 ? 'Câu tiếp theo' : 'Xem kết quả chung cuộc'}
-                      </span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
+                  </motion.div>
+                )}
+              </motion.div>
+            </AnimatePresence>
           </div>
         )}
 

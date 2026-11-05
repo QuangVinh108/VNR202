@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { SectionHeader } from '../components/SectionHeader';
 import { Timeline } from '../components/Timeline';
 import { Accordion } from '../components/Accordion';
@@ -97,7 +98,14 @@ export const CongressIXSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
           {/* Card 1: Bối cảnh quốc tế */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-heritage-gold/30 shadow-heritage flex flex-col justify-between">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            whileHover={{ y: -6 }}
+            className="bg-white rounded-2xl p-6 sm:p-8 border border-heritage-gold/30 shadow-heritage flex flex-col justify-between transition-all duration-300"
+          >
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl bg-heritage-red/10 text-heritage-red flex items-center justify-center shrink-0">
@@ -117,10 +125,17 @@ export const CongressIXSection: React.FC = () => {
                 ))}
               </ul>
             </div>
-          </div>
+          </motion.div>
 
           {/* Card 2: Bối cảnh trong nước */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-heritage-gold/30 shadow-heritage flex flex-col justify-between">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            whileHover={{ y: -6 }}
+            className="bg-white rounded-2xl p-6 sm:p-8 border border-heritage-gold/30 shadow-heritage flex flex-col justify-between transition-all duration-300"
+          >
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl bg-heritage-gold/20 text-heritage-goldDark flex items-center justify-center shrink-0">
@@ -140,7 +155,7 @@ export const CongressIXSection: React.FC = () => {
                 ))}
               </ul>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>
@@ -213,7 +228,14 @@ export const CongressIXSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           {/* Card 1: Kết quả */}
-          <div className="bg-white rounded-2xl p-6 border border-emerald-200 shadow-sm flex flex-col justify-between">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            whileHover={{ y: -6 }}
+            className="bg-white rounded-2xl p-6 border border-emerald-200 shadow-sm flex flex-col justify-between transition-all duration-300"
+          >
             <div>
               <div className="flex items-center gap-2.5 mb-4 text-emerald-800">
                 <CheckCircle2 className="w-6 h-6 text-emerald-600 shrink-0" />
@@ -231,10 +253,17 @@ export const CongressIXSection: React.FC = () => {
                 ))}
               </ul>
             </div>
-          </div>
+          </motion.div>
 
           {/* Card 2: Hạn chế */}
-          <div className="bg-white rounded-2xl p-6 border border-amber-200 shadow-sm flex flex-col justify-between">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.12 }}
+            whileHover={{ y: -6 }}
+            className="bg-white rounded-2xl p-6 border border-amber-200 shadow-sm flex flex-col justify-between transition-all duration-300"
+          >
             <div>
               <div className="flex items-center gap-2.5 mb-4 text-amber-800">
                 <AlertTriangle className="w-6 h-6 text-amber-600 shrink-0" />
@@ -252,10 +281,17 @@ export const CongressIXSection: React.FC = () => {
                 ))}
               </ul>
             </div>
-          </div>
+          </motion.div>
 
           {/* Card 3: Ý nghĩa */}
-          <div className="bg-white rounded-2xl p-6 border border-heritage-red/30 shadow-heritage flex flex-col justify-between">
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.24 }}
+            whileHover={{ y: -6 }}
+            className="bg-white rounded-2xl p-6 border border-heritage-red/30 shadow-heritage flex flex-col justify-between transition-all duration-300"
+          >
             <div>
               <div className="flex items-center gap-2.5 mb-4 text-heritage-red">
                 <Sparkles className="w-6 h-6 text-heritage-red shrink-0" />
@@ -273,7 +309,7 @@ export const CongressIXSection: React.FC = () => {
                 ))}
               </ul>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>

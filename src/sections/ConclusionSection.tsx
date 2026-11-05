@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { SectionHeader } from '../components/SectionHeader';
 import { ArrowRight, Landmark, Compass, Target, Sparkles, BookOpen } from 'lucide-react';
 
@@ -53,7 +54,7 @@ export const ConclusionSection: React.FC = () => {
       <div className="relative mb-16">
         
         {/* Connecting line for desktop */}
-        <div className="hidden lg:block absolute top-1/2 left-8 right-8 h-1 bg-gradient-to-r from-heritage-red via-heritage-gold to-heritage-ocean -translate-y-1/2 z-0" />
+        <div className="hidden lg:block absolute top-1/2 left-8 right-8 h-1 bg-gradient-to-r from-heritage-red via-heritage-gold to-heritage-ocean -translate-y-1/2 z-0 animate-pulse-glow" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
           {steps.map((st, idx) => {
@@ -61,17 +62,22 @@ export const ConclusionSection: React.FC = () => {
             const isLast = idx === steps.length - 1;
 
             return (
-              <div
+              <motion.div
                 key={st.step}
-                className="bg-white rounded-2xl p-6 sm:p-7 border border-heritage-gold/40 shadow-heritage hover:shadow-heritage-hover hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.5, delay: idx * 0.12 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="bg-white rounded-2xl p-6 sm:p-7 border border-heritage-gold/40 shadow-heritage hover:shadow-heritage-hover transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   {/* Step number badge & icon */}
                   <div className="flex items-center justify-between mb-4">
-                    <span className="w-10 h-10 rounded-xl bg-heritage-ivory border border-heritage-gold/40 text-heritage-navy font-black text-sm flex items-center justify-center">
+                    <span className="w-10 h-10 rounded-xl bg-heritage-ivory border border-heritage-gold/40 text-heritage-navy font-black text-sm flex items-center justify-center shadow-sm">
                       {st.step}
                     </span>
-                    <div className="w-9 h-9 rounded-lg bg-heritage-surfaceRed text-heritage-red flex items-center justify-center">
+                    <div className="w-9 h-9 rounded-lg bg-heritage-surfaceRed text-heritage-red flex items-center justify-center group-hover:scale-110 transition-transform">
                       <Icon className="w-5 h-5" />
                     </div>
                   </div>
@@ -90,17 +96,23 @@ export const ConclusionSection: React.FC = () => {
 
                 {!isLast && (
                   <div className="lg:hidden flex items-center justify-center pt-4 text-heritage-gold">
-                    <ArrowRight className="w-5 h-5 rotate-90 md:rotate-0" />
+                    <ArrowRight className="w-5 h-5 rotate-90 md:rotate-0 animate-pulse" />
                   </div>
                 )}
-              </div>
+              </motion.div>
             );
           })}
         </div>
       </div>
 
       {/* Academic Conclusion Manifesto Box */}
-      <div className="bg-white rounded-3xl overflow-hidden border border-heritage-gold/50 shadow-heritage relative grid grid-cols-1 lg:grid-cols-12 items-center">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: '-40px' }}
+        transition={{ duration: 0.6 }}
+        className="bg-white rounded-3xl overflow-hidden border border-heritage-gold/50 shadow-heritage relative grid grid-cols-1 lg:grid-cols-12 items-center"
+      >
         <div className="lg:col-span-5 relative aspect-[16/10] lg:aspect-auto lg:h-full min-h-[260px] overflow-hidden bg-slate-900">
           <img
             src="/images/hero_halong.jpg"
@@ -134,7 +146,7 @@ export const ConclusionSection: React.FC = () => {
             <span>• Phát triển Việt Nam</span>
           </div>
         </div>
-      </div>
+      </motion.div>
 
     </section>
   );
