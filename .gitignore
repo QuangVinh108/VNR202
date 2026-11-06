@@ -26,3 +26,6 @@ pnpm-debug.log*
 .DS_Store
 Thumbs.db
 
+# Root media files (actual deployed assets live in public/)
+/*.mp4
+

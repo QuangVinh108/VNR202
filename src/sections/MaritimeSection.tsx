@@ -24,7 +24,9 @@ import {
   Network,
   CheckCircle2,
   AlertOctagon,
-  HeartHandshake
+  HeartHandshake,
+  Film,
+  Sparkles
 } from 'lucide-react';
 
 export const MaritimeSection: React.FC = () => {
@@ -504,6 +506,66 @@ export const MaritimeSection: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* PHẦN F: THƯỚC PHIM TƯ LIỆU KINH TẾ BIỂN VIỆT NAM (NẰM TRÊN PHẦN KẾT LUẬN) */}
+      <motion.div
+        id="maritime-documentary"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="mt-20 scroll-mt-24"
+      >
+        <div className="flex items-center gap-2 mb-6">
+          <span className="w-2 h-6 bg-heritage-ocean rounded-full" />
+          <h3 className="text-2xl font-heading font-bold text-heritage-navy">
+            F. Thước Phim Tư Liệu: Chiến Lược Kinh Tế Biển Việt Nam
+          </h3>
+        </div>
+
+        {/* Video Player Card */}
+        <div className="rounded-3xl overflow-hidden border border-heritage-ocean/30 shadow-ocean bg-white p-4 sm:p-8">
+          <div className="max-w-4xl mx-auto">
+            {/* Header info bar */}
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-heritage-ocean text-white shadow-sm">
+                  <Film className="w-3.5 h-3.5" />
+                  Thước phim tư liệu
+                </span>
+                <span className="text-xs font-semibold text-heritage-ocean bg-heritage-oceanMist px-2.5 py-1 rounded-full border border-heritage-ocean/20">
+                  Nghị quyết số 09-NQ/TW
+                </span>
+              </div>
+              <span className="text-xs text-heritage-muted flex items-center gap-1 font-medium">
+                <Sparkles className="w-3.5 h-3.5 text-heritage-gold" />
+                Âm thanh & Thuyết minh sống động
+              </span>
+            </div>
+
+            {/* Video Player Screen */}
+            <div className="relative rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 shadow-2xl aspect-video group">
+              <video
+                controls
+                playsInline
+                preload="metadata"
+                className="w-full h-full object-contain"
+                poster="/images/sovereignty.jpg"
+              >
+                <source src="/videos/kinh-te-bien.mp4" type="video/mp4" />
+                Trình duyệt của bạn không hỗ trợ phát định dạng video HTML5 này.
+              </video>
+            </div>
+
+            {/* Video description / takeaways */}
+            <div className="mt-6 pt-5 border-t border-heritage-gold/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <p className="text-xs sm:text-sm text-heritage-dark leading-relaxed">
+                <strong className="text-heritage-navy font-bold">Ý nghĩa tư liệu:</strong> Thước phim ghi lại tầm nhìn chiến lược của Đảng về không gian sinh tồn biển, sự phát triển đột phá của hệ thống cảng biển nước sâu, năng lượng tái tạo và quyết tâm gìn giữ vững chắc chủ quyền biển đảo quê hương.
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
 
     </section>
   );
